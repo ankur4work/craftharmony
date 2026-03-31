@@ -143,41 +143,33 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className={`overflow-hidden transition-all duration-300 xl:hidden ${isOpen ? 'max-h-[720px] border-t border-cocoa/8 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="space-y-4 px-4 py-4 sm:px-5">
-              <div className="rounded-[1.6rem] bg-[linear-gradient(135deg,rgba(255,250,245,0.95),rgba(232,214,200,0.68))] p-5">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-stone-400">Curated Craft</p>
-                <h2 className="mt-2 font-serif text-3xl leading-none text-cocoa">Objects with history, scaled for modern living.</h2>
-              </div>
-
-              <div className="grid gap-2 sm:grid-cols-2">
+          <div className={`overflow-hidden transition-all duration-300 xl:hidden ${isOpen ? 'max-h-[480px] border-t border-cocoa/8 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className="px-4 py-3 sm:px-5">
+              <div className="flex flex-wrap gap-1.5">
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
                     href={item.path}
-                    className={`rounded-2xl px-4 py-3 text-sm font-medium transition ${pathname === item.path ? 'bg-cocoa text-white shadow-sm' : 'border border-cocoa/8 bg-white/80 text-stone-600 hover:bg-sand/60 hover:text-cocoa'}`}
+                    className={`rounded-full px-4 py-2 text-sm font-medium transition ${pathname === item.path ? 'bg-cocoa text-white shadow-sm' : 'border border-cocoa/8 bg-white/80 text-stone-600 hover:bg-sand/60 hover:text-cocoa'}`}
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
 
-              <div className="rounded-[1.5rem] border border-cocoa/8 bg-white/70 p-4">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-stone-400">Policies</p>
-                <div className="mt-3 flex flex-col gap-2">
-                  {policyItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      href={item.path}
-                      className={`rounded-xl px-3 py-2.5 text-sm transition ${pathname === item.path ? 'bg-sand text-cocoa font-medium' : 'text-stone-500 hover:bg-sand/60 hover:text-cocoa'}`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {policyItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    className={`rounded-full px-3 py-1.5 text-xs transition ${pathname === item.path ? 'bg-sand text-cocoa font-medium' : 'text-stone-400 hover:bg-sand/60 hover:text-cocoa'}`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
 
-              <Link href="/cart" className="button-primary w-full justify-center text-xs normal-case tracking-wide">
+              <Link href="/cart" className="button-primary mt-3 w-full justify-center text-xs normal-case tracking-wide">
                 View Cart {cartCount > 0 && `(${cartCount})`}
               </Link>
             </div>
