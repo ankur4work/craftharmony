@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useInventory } from '@/context/InventoryContext';
@@ -78,7 +77,6 @@ function formatCurrency(value) {
 }
 
 export default function AdminInventoryClient() {
-  const router = useRouter();
   const {
     bulkDeleteProducts,
     bulkUpdateProducts,
@@ -88,7 +86,6 @@ export default function AdminInventoryClient() {
     materials,
     products,
     deleteProduct,
-    refreshProducts,
     upsertProduct,
   } = useInventory();
   const { isHydrated: ordersHydrated, orders, orderStats, updateOrderStatus, refreshOrders } = useOrders();
@@ -101,15 +98,13 @@ export default function AdminInventoryClient() {
   const [stockFilter, setStockFilter] = useState('all');
   const [showOrders, setShowOrders] = useState(true);
   const [formState, setFormState] = useState(EMPTY_FORM);
-  const [catalogPanelHeight, setCatalogPanelHeight] = useState(null);
   const productWorkspaceRef = useRef(null);
   const productNameInputRef = useRef(null);
   const productFormRef = useRef(null);
 
   const handleLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' });
-    router.refresh();
-    router.replace('/admin');
+    window.location.href = '/admin';
   };
 
   const filteredProducts = useMemo(() => {
@@ -154,43 +149,10 @@ export default function AdminInventoryClient() {
       return;
     }
 
-    if (filteredProducts.length > 0 && !activeProductId && !isCreatingNew) {
-      setActiveProductId(filteredProducts[0].id);
-      return;
-    }
-
-    if (products.length === 0) {
+    if (!activeProductId && !isCreatingNew) {
       setFormState(EMPTY_FORM);
     }
-  }, [activeProduct, activeProductId, filteredProducts, isCreatingNew, isHydrated, products.length]);
-
-  useEffect(() => {
-    const formElement = productFormRef.current;
-    if (!formElement || typeof window === 'undefined') return undefined;
-
-    const syncCatalogHeight = () => {
-      if (window.innerWidth < 1280) {
-        setCatalogPanelHeight(null);
-        return;
-      }
-
-      setCatalogPanelHeight(formElement.getBoundingClientRect().height);
-    };
-
-    syncCatalogHeight();
-
-    const resizeObserver = typeof ResizeObserver !== 'undefined'
-      ? new ResizeObserver(() => syncCatalogHeight())
-      : null;
-
-    resizeObserver?.observe(formElement);
-    window.addEventListener('resize', syncCatalogHeight);
-
-    return () => {
-      resizeObserver?.disconnect();
-      window.removeEventListener('resize', syncCatalogHeight);
-    };
-  }, [activeProductId, formState, isCreatingNew, previewImages.length]);
+  }, [activeProduct, activeProductId, isCreatingNew, isHydrated]);
 
   const handleFieldChange = (event) => {
     const { checked, name, type, value } = event.target;
@@ -202,7 +164,7 @@ export default function AdminInventoryClient() {
     setActiveProductId('');
     setFormState(EMPTY_FORM);
     window.requestAnimationFrame(() => {
-      productWorkspaceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      productFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       window.setTimeout(() => productNameInputRef.current?.focus(), 220);
     });
   };
@@ -211,7 +173,7 @@ export default function AdminInventoryClient() {
     setIsCreatingNew(false);
     setActiveProductId(productId);
     window.requestAnimationFrame(() => {
-      productWorkspaceRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      productFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   };
 
@@ -322,6 +284,123 @@ export default function AdminInventoryClient() {
     }
   };
 
+  const renderProductForm = () => (
+    <form ref={productFormRef} onSubmit={handleSubmit} className="mt-3 rounded-[1.5rem] border-2 border-cocoa/20 bg-white/90 p-5 shadow-soft-lg md:p-7">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-400">
+            {activeProduct ? 'Editing Existing Product' : 'Create New Product'}
+          </p>
+          <h2 className="mt-2 font-serif text-3xl text-cocoa">
+            {activeProduct ? activeProduct.name : 'New inventory item'}
+          </h2>
+          <p className="mt-1 text-sm text-stone-500">
+            {activeProduct ? `Last updated ${formatTimestamp(activeProduct.updatedAt)}` : 'Add pricing, descriptions, imagery, and stock details.'}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {activeProduct && (
+            <>
+              <Link href={`/products/${activeProduct.id}`} className="button-secondary px-4 py-2 text-xs">View Live</Link>
+              <button type="button" onClick={handleDelete} className="rounded-full border border-terracotta/20 bg-terracotta/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-terracotta transition hover:bg-terracotta/15" disabled={isSaving}>Delete</button>
+            </>
+          )}
+          <button type="button" onClick={() => { setActiveProductId(''); setIsCreatingNew(false); setFormState(EMPTY_FORM); }} className="rounded-full border border-cocoa/12 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
+            Close
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Product Name</span>
+          <input ref={productNameInputRef} name="name" value={formState.name} onChange={handleFieldChange} required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">SKU</span>
+          <input name="sku" value={formState.sku} onChange={handleFieldChange} placeholder="Auto-generated if empty" className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Category</span>
+          <input name="category" value={formState.category} onChange={handleFieldChange} list="admin-categories" required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Material</span>
+          <input name="material" value={formState.material} onChange={handleFieldChange} list="admin-materials" required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Price</span>
+          <input name="price" type="number" min="0" step="0.01" value={formState.price} onChange={handleFieldChange} required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Rating</span>
+          <input name="rating" type="number" min="0" max="5" step="0.1" value={formState.rating} onChange={handleFieldChange} className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Stock Units</span>
+          <input name="stock" type="number" min="0" step="1" value={formState.stock} onChange={handleFieldChange} required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Dimensions</span>
+          <input name="dimensions" value={formState.dimensions} onChange={handleFieldChange} className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Artisan / Studio</span>
+          <input name="artisan" value={formState.artisan} onChange={handleFieldChange} required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+        <label className="block">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Origin</span>
+          <input name="origin" value={formState.origin} onChange={handleFieldChange} required className="mt-2 h-11 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+        </label>
+      </div>
+
+      <label className="mt-4 block">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Short Description</span>
+        <textarea name="shortDescription" value={formState.shortDescription} onChange={handleFieldChange} rows={2} required className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
+      </label>
+      <label className="mt-4 block">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Full Description</span>
+        <textarea name="description" value={formState.description} onChange={handleFieldChange} rows={4} required className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
+      </label>
+      <label className="mt-4 block">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Craft Story</span>
+        <textarea name="story" value={formState.story} onChange={handleFieldChange} rows={3} required className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
+      </label>
+      <label className="mt-4 block">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Image URLs</span>
+        <textarea name="imagesText" value={formState.imagesText} onChange={handleFieldChange} rows={3} placeholder="One image URL per line" className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
+      </label>
+
+      {previewImages.length > 0 && (
+        <div className="mt-4 flex gap-3 overflow-x-auto">
+          {previewImages.slice(0, 3).map((image, index) => (
+            <div key={`${image}-${index}`} className="shrink-0 overflow-hidden rounded-xl border border-cocoa/10 bg-white p-1.5">
+              <ImageWithFallback src={image} alt={`Preview ${index + 1}`} className="h-24 w-24 rounded-lg object-cover" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-5 flex flex-wrap items-center gap-4">
+        {[['featured', 'Featured'], ['bestSeller', 'Best Seller'], ['isNew', 'New Arrival']].map(([name, label]) => (
+          <label key={name} className="flex items-center gap-2 text-sm text-cocoa">
+            <input type="checkbox" name={name} checked={formState[name]} onChange={handleFieldChange} className="h-4 w-4 accent-[#5d4336]" />
+            <span>{label}</span>
+          </label>
+        ))}
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-3">
+        <button type="submit" className="button-primary text-xs" disabled={isSaving}>
+          {isSaving ? 'Saving...' : activeProduct ? 'Save Changes' : 'Add Product'}
+        </button>
+        <button type="button" onClick={handleCreateNew} className="button-secondary text-xs" disabled={isSaving}>
+          Clear Form
+        </button>
+      </div>
+    </form>
+  );
+
   if (!isHydrated || !ordersHydrated) {
     return (
       <section className="container-shell py-10 md:py-16">
@@ -348,20 +427,7 @@ export default function AdminInventoryClient() {
             <a href="#product-workspace" onClick={handleCreateNew} className="button-secondary text-xs">
               New Product
             </a>
-            <button type="button" onClick={async () => {
-              try {
-                const res = await fetch('/api/products/sync-defaults', { method: 'POST' });
-                if (res.ok) {
-                  await refreshProducts();
-                  addToast('Catalog synced with default products', 'success');
-                } else {
-                  addToast('Sync failed', 'error');
-                }
-              } catch { addToast('Sync failed', 'error'); }
-            }} className="rounded-full border border-cocoa/12 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
-              Sync Catalog
-            </button>
-            <button type="button" onClick={handleLogout} className="rounded-full border border-cocoa/12 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
+<button type="button" onClick={handleLogout} className="rounded-full border border-cocoa/12 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
               Logout
             </button>
           </div>
@@ -427,7 +493,7 @@ export default function AdminInventoryClient() {
             </div>
           ) : (
             <div className="mt-6 space-y-4">
-              {orders.map((order) => {
+              {orders.filter((order) => order.status !== 'Delivered').map((order) => {
                 const statusColor = {
                   Placed: 'bg-amber-100 text-amber-700',
                   Confirmed: 'bg-blue-50 text-blue-700',
@@ -511,12 +577,9 @@ export default function AdminInventoryClient() {
         </div>
       </div>
 
-      <div id="product-workspace" ref={productWorkspaceRef} className="mt-10 grid gap-6 lg:gap-8 xl:grid-cols-[0.95fr_1.05fr]">
-        <div className="xl:h-full">
-          <div
-            className="premium-panel p-5 md:p-6 xl:flex xl:flex-col xl:overflow-hidden"
-            style={catalogPanelHeight ? { height: `${catalogPanelHeight}px` } : undefined}
-          >
+      <div id="product-workspace" ref={productWorkspaceRef} className="mt-10">
+        <div>
+          <div className="premium-panel p-5 md:p-6">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-400">Products</p>
@@ -572,182 +635,60 @@ export default function AdminInventoryClient() {
               </div>
             </div>
 
-            <div className="mt-5 space-y-3 xl:min-h-0 xl:flex-1 xl:overflow-y-auto xl:pr-2">
+            <div className="mt-5 space-y-3">
+              {/* New product form at top when creating */}
+              {isCreatingNew && renderProductForm()}
+
               {filteredProducts.map((product) => {
-                const isActive = product.id === activeProductId;
+                const isActive = product.id === activeProductId && !isCreatingNew;
                 const isSelected = selectedIds.includes(product.id);
 
                 return (
-                  <div
-                    key={product.id}
-                    className={`rounded-[1.5rem] border p-3 transition ${isActive ? 'border-cocoa bg-sand/70 shadow-soft' : 'border-cocoa/8 bg-white/70 hover:border-cocoa/20 hover:bg-sand/40'}`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <input
-                        type="checkbox"
-                        checked={isSelected}
-                        onChange={() => toggleSelectedId(product.id)}
-                        className="mt-2 h-4 w-4 accent-[#5d4336]"
-                        aria-label={`Select ${product.name}`}
-                      />
-                      <button type="button" onClick={() => handleEditProduct(product.id)} className="flex flex-1 items-center gap-4 text-left">
-                        <ImageWithFallback src={product.images[0]} alt={product.name} className="h-16 w-16 rounded-[1rem] object-cover sm:h-20 sm:w-20 sm:rounded-[1.2rem]" />
-                        <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-center gap-2">
-                            <p className="truncate font-serif text-2xl leading-none text-cocoa">{product.name}</p>
-                            <span className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] ${product.stock > 5 ? 'bg-forest/10 text-forest' : product.stock > 0 ? 'bg-amber-100 text-amber-700' : 'bg-terracotta/10 text-terracotta'}`}>
-                              {product.stock > 5 ? 'Healthy stock' : product.stock > 0 ? 'Low stock' : 'Out'}
-                            </span>
+                  <div key={product.id}>
+                    <div
+                      className={`rounded-[1.5rem] border p-3 transition ${isActive ? 'border-cocoa bg-sand/70 shadow-soft' : 'border-cocoa/8 bg-white/70 hover:border-cocoa/20 hover:bg-sand/40'}`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleSelectedId(product.id)}
+                          className="mt-2 h-4 w-4 accent-[#5d4336]"
+                          aria-label={`Select ${product.name}`}
+                        />
+                        <button type="button" onClick={() => handleEditProduct(product.id)} className="flex flex-1 items-center gap-4 text-left">
+                          <ImageWithFallback src={product.images[0]} alt={product.name} className="h-16 w-16 rounded-[1rem] object-cover sm:h-20 sm:w-20 sm:rounded-[1.2rem]" />
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <p className="truncate font-serif text-2xl leading-none text-cocoa">{product.name}</p>
+                              <span className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] ${product.stock > 5 ? 'bg-forest/10 text-forest' : product.stock > 0 ? 'bg-amber-100 text-amber-700' : 'bg-terracotta/10 text-terracotta'}`}>
+                                {product.stock > 5 ? 'Healthy stock' : product.stock > 0 ? 'Low stock' : 'Out'}
+                              </span>
+                            </div>
+                            <p className="mt-2 text-xs uppercase tracking-[0.16em] text-stone-400">{product.category}</p>
+                            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-stone-500">
+                              <span>{product.sku}</span>
+                              <span>${product.price}</span>
+                              <span>{product.stock} units</span>
+                            </div>
                           </div>
-                          <p className="mt-2 text-xs uppercase tracking-[0.16em] text-stone-400">{product.category}</p>
-                          <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-stone-500">
-                            <span>{product.sku}</span>
-                            <span>${product.price}</span>
-                            <span>{product.stock} units</span>
-                          </div>
-                        </div>
-                      </button>
+                        </button>
+                      </div>
                     </div>
+                    {/* Inline edit form directly below the active product */}
+                    {isActive && renderProductForm()}
                   </div>
                 );
               })}
             </div>
 
-            {filteredProducts.length === 0 && (
+            {filteredProducts.length === 0 && !isCreatingNew && (
               <div className="mt-5 rounded-[1.5rem] border border-dashed border-cocoa/15 bg-sand/30 p-8 text-center">
                 <p className="font-serif text-2xl text-cocoa">No matching products</p>
                 <p className="mt-2 text-sm text-stone-500">Try a different search or create a new listing.</p>
               </div>
             )}
           </div>
-        </div>
-
-        <div>
-          <form ref={productFormRef} onSubmit={handleSubmit} className="premium-panel p-6 md:p-8">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-400">
-                  {activeProduct ? 'Editing Existing Product' : 'Create New Product'}
-                </p>
-                <h2 className="mt-2 font-serif text-4xl text-cocoa">
-                  {activeProduct ? activeProduct.name : 'New inventory item'}
-                </h2>
-                <p className="mt-2 text-sm text-stone-500">
-                  {activeProduct ? `Last updated ${formatTimestamp(activeProduct.updatedAt)}` : 'Add pricing, descriptions, imagery, and stock details.'}
-                </p>
-              </div>
-              {activeProduct && (
-                <div className="flex flex-wrap gap-2 sm:gap-3">
-                  <Link href={`/products/${activeProduct.id}`} className="button-secondary px-4 py-2.5 text-xs sm:px-5 sm:py-3">View Live</Link>
-                  <button type="button" onClick={handleDelete} className="rounded-full border border-terracotta/20 bg-terracotta/10 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-terracotta transition hover:bg-terracotta/15 sm:px-5 sm:py-3" disabled={isSaving}>
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <div className="mt-8 grid gap-5 md:grid-cols-2">
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Product Name</span>
-                <input ref={productNameInputRef} name="name" value={formState.name} onChange={handleFieldChange} required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">SKU</span>
-                <input name="sku" value={formState.sku} onChange={handleFieldChange} placeholder="Auto-generated if empty" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Category</span>
-                <input name="category" value={formState.category} onChange={handleFieldChange} list="admin-categories" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Material</span>
-                <input name="material" value={formState.material} onChange={handleFieldChange} list="admin-materials" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Price</span>
-                <input name="price" type="number" min="0" step="0.01" value={formState.price} onChange={handleFieldChange} required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Rating</span>
-                <input name="rating" type="number" min="0" max="5" step="0.1" value={formState.rating} onChange={handleFieldChange} className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Stock Units</span>
-                <input name="stock" type="number" min="0" step="1" value={formState.stock} onChange={handleFieldChange} required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Dimensions</span>
-                <input name="dimensions" value={formState.dimensions} onChange={handleFieldChange} className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Artisan / Studio</span>
-                <input name="artisan" value={formState.artisan} onChange={handleFieldChange} required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-              <label className="block">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Origin</span>
-                <input name="origin" value={formState.origin} onChange={handleFieldChange} required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-              </label>
-            </div>
-
-            <label className="mt-5 block">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Short Description</span>
-              <textarea name="shortDescription" value={formState.shortDescription} onChange={handleFieldChange} rows={3} required className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
-            </label>
-
-            <label className="mt-5 block">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Full Description</span>
-              <textarea name="description" value={formState.description} onChange={handleFieldChange} rows={5} required className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
-            </label>
-
-            <label className="mt-5 block">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Craft Story</span>
-              <textarea name="story" value={formState.story} onChange={handleFieldChange} rows={4} required className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa" />
-            </label>
-
-            <label className="mt-5 block">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Image URLs</span>
-              <textarea
-                name="imagesText"
-                value={formState.imagesText}
-                onChange={handleFieldChange}
-                rows={5}
-                placeholder="One image URL per line"
-                className="mt-2 w-full rounded-2xl border border-cocoa/10 bg-white px-4 py-3 text-sm leading-7 text-stone-700 outline-none transition focus:border-cocoa"
-              />
-            </label>
-
-            {previewImages.length > 0 && (
-              <div className="mt-5 grid gap-4 sm:grid-cols-3">
-                {previewImages.slice(0, 3).map((image, index) => (
-                  <div key={`${image}-${index}`} className="overflow-hidden rounded-[1.5rem] border border-cocoa/10 bg-white p-2">
-                    <ImageWithFallback src={image} alt={`Preview ${index + 1}`} className="h-36 w-full rounded-[1rem] object-cover" />
-                  </div>
-                ))}
-              </div>
-            )}
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              {[
-                ['featured', 'Featured'],
-                ['bestSeller', 'Best Seller'],
-                ['isNew', 'New Arrival'],
-              ].map(([name, label]) => (
-                <label key={name} className="flex items-center gap-3 rounded-2xl border border-cocoa/10 bg-white/70 px-4 py-3 text-sm text-cocoa">
-                  <input type="checkbox" name={name} checked={formState[name]} onChange={handleFieldChange} className="h-4 w-4 accent-[#5d4336]" />
-                  <span>{label}</span>
-                </label>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button type="submit" className="button-primary" disabled={isSaving}>
-                {isSaving ? 'Saving...' : activeProduct ? 'Save Product Changes' : 'Add Product to Inventory'}
-              </button>
-              <button type="button" onClick={handleCreateNew} className="button-secondary" disabled={isSaving}>
-                Clear Form
-              </button>
-            </div>
-          </form>
         </div>
       </div>
 

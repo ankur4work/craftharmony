@@ -29,8 +29,7 @@ export default function AdminLoginClient() {
         return;
       }
 
-      router.refresh();
-      router.replace(searchParams.get('next') || '/admin');
+      window.location.href = searchParams.get('next') || '/admin';
     } catch {
       setError('Could not sign in');
     } finally {
