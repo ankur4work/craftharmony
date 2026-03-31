@@ -3,17 +3,66 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
+import { useOrders } from '@/context/OrderContext';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import ScrollReveal from '@/components/ScrollReveal';
 
+const INITIAL_FORM = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  addressLine1: '',
+  addressLine2: '',
+  city: '',
+  state: '',
+  postalCode: '',
+  country: '',
+};
+
 export default function CheckoutClient() {
   const { cartItems, totalPrice, clearCart, isHydrated } = useCart();
-  const [orderPlaced, setOrderPlaced] = useState(false);
+  const { placeOrder } = useOrders();
+  const [formState, setFormState] = useState(INITIAL_FORM);
+  const [orderPlaced, setOrderPlaced] = useState(null);
 
-  const handlePlaceOrder = (e) => {
-    e.preventDefault();
-    setOrderPlaced(true);
+  const handleFieldChange = (event) => {
+    const { name, value } = event.target;
+    setFormState((current) => ({ ...current, [name]: value }));
+  };
+
+  const handlePlaceOrder = (event) => {
+    event.preventDefault();
+
+    const order = placeOrder({
+      customer: {
+        firstName: formState.firstName.trim(),
+        lastName: formState.lastName.trim(),
+        email: formState.email.trim(),
+        phone: formState.phone.trim(),
+      },
+      shippingAddress: {
+        addressLine1: formState.addressLine1.trim(),
+        addressLine2: formState.addressLine2.trim(),
+        city: formState.city.trim(),
+        state: formState.state.trim(),
+        postalCode: formState.postalCode.trim(),
+        country: formState.country.trim(),
+      },
+      items: cartItems.map((item) => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        image: item.images?.[0] || '',
+        artisan: item.artisan,
+      })),
+      total: totalPrice,
+    });
+
+    setOrderPlaced(order);
     clearCart();
+    setFormState(INITIAL_FORM);
   };
 
   if (!isHydrated) {
@@ -30,11 +79,16 @@ export default function CheckoutClient() {
         <ScrollReveal>
           <div className="premium-panel mx-auto max-w-2xl p-12 text-center">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-forest/10 text-forest">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
             </div>
             <h1 className="mt-6 font-serif text-4xl text-cocoa">Order Confirmed</h1>
-            <p className="mt-4 text-stone-500">Thank you for supporting artisan craftsmanship. Your order is being prepared with care.</p>
-            <p className="mt-2 text-sm text-stone-400">This is a demo — no real payment was processed.</p>
+            <p className="mt-4 text-stone-500">Your order has been placed and is now visible in the admin dashboard.</p>
+            <p className="mt-3 text-sm text-stone-500">
+              Order ID: <span className="font-semibold text-cocoa">{orderPlaced.id}</span>
+            </p>
+            <p className="mt-2 text-sm text-stone-400">
+              Shipping to {orderPlaced.shippingAddress.city}, {orderPlaced.shippingAddress.country}
+            </p>
             <Link href="/products" className="button-primary mt-8">Continue Shopping</Link>
           </div>
         </ScrollReveal>
@@ -61,86 +115,69 @@ export default function CheckoutClient() {
           <span className="inline-block h-px w-8 bg-terracotta" />
           Checkout
         </p>
-        <h1 className="mt-3 font-serif text-4xl leading-none text-cocoa md:text-5xl">Complete your order</h1>
+        <h1 className="mt-3 font-serif text-4xl leading-none text-cocoa md:text-5xl">Place your order</h1>
+        <p className="mt-4 max-w-2xl text-stone-500">
+          Add your contact and shipping address to complete the order.
+        </p>
       </ScrollReveal>
 
       <form onSubmit={handlePlaceOrder} className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-        {/* Form */}
         <ScrollReveal delay={100}>
           <div className="space-y-6">
-            {/* Contact */}
             <div className="premium-panel p-6 md:p-8">
               <h2 className="font-serif text-2xl text-cocoa">Contact Information</h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <label className="block">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">First Name</span>
-                  <input type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="firstName" value={formState.firstName} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Last Name</span>
-                  <input type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="lastName" value={formState.lastName} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block sm:col-span-2">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Email</span>
-                  <input type="email" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="email" value={formState.email} onChange={handleFieldChange} type="email" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block sm:col-span-2">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Phone</span>
-                  <input type="tel" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="phone" value={formState.phone} onChange={handleFieldChange} type="tel" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
               </div>
             </div>
 
-            {/* Shipping */}
             <div className="premium-panel p-6 md:p-8">
               <h2 className="font-serif text-2xl text-cocoa">Shipping Address</h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <label className="block sm:col-span-2">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Address</span>
-                  <input type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Address Line 1</span>
+                  <input name="addressLine1" value={formState.addressLine1} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                </label>
+                <label className="block sm:col-span-2">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Address Line 2</span>
+                  <input name="addressLine2" value={formState.addressLine2} onChange={handleFieldChange} type="text" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">City</span>
-                  <input type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="city" value={formState.city} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">State / Province</span>
-                  <input type="text" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="state" value={formState.state} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">ZIP / Postal Code</span>
-                  <input type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="postalCode" value={formState.postalCode} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
                 <label className="block">
                   <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Country</span>
-                  <input type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-                </label>
-              </div>
-            </div>
-
-            {/* Payment (demo) */}
-            <div className="premium-panel p-6 md:p-8">
-              <h2 className="font-serif text-2xl text-cocoa">Payment</h2>
-              <p className="mt-2 text-xs text-stone-400">Demo only — no real payment will be processed.</p>
-              <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <label className="block sm:col-span-2">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Card Number</span>
-                  <input type="text" placeholder="4242 4242 4242 4242" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-                </label>
-                <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Expiry</span>
-                  <input type="text" placeholder="MM/YY" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
-                </label>
-                <label className="block">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">CVC</span>
-                  <input type="text" placeholder="123" className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
+                  <input name="country" value={formState.country} onChange={handleFieldChange} type="text" required className="mt-2 h-12 w-full rounded-xl border border-cocoa/10 bg-white px-4 text-sm text-stone-700 outline-none transition focus:border-cocoa" />
                 </label>
               </div>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Order Summary Sidebar */}
         <ScrollReveal delay={200}>
           <div className="premium-panel h-fit p-8 lg:sticky lg:top-28">
             <h2 className="font-serif text-2xl text-cocoa">Order Summary</h2>
@@ -151,7 +188,7 @@ export default function CheckoutClient() {
                     <ImageWithFallback src={item.images[0]} alt={item.name} className="h-16 w-16 rounded-xl object-cover" />
                     <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-cocoa text-[10px] font-bold text-white">{item.quantity}</span>
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-cocoa">{item.name}</p>
                     <p className="text-xs text-stone-400">{item.artisan}</p>
                   </div>
@@ -171,14 +208,6 @@ export default function CheckoutClient() {
               </div>
             </div>
             <button type="submit" className="button-primary mt-8 w-full justify-center">Place Order</button>
-            <div className="mt-5 flex flex-wrap justify-center gap-3">
-              {['Secure', 'Encrypted', 'Protected'].map((badge) => (
-                <span key={badge} className="flex items-center gap-1 text-[10px] uppercase tracking-[0.1em] text-stone-400">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-forest"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  {badge}
-                </span>
-              ))}
-            </div>
           </div>
         </ScrollReveal>
       </form>

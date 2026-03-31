@@ -11,8 +11,14 @@ export default function ProductCard({ product }) {
   const { isInWishlist, toggleWishlist } = useWishlist();
   const { addToast } = useToast();
   const wishlisted = isInWishlist(product.id);
+  const isOutOfStock = product.stock < 1;
 
   const handleAddToCart = () => {
+    if (isOutOfStock) {
+      addToast(`${product.name} is currently out of stock`, 'error');
+      return;
+    }
+
     addToCart(product);
     addToast(`${product.name} added to cart`);
   };
@@ -38,6 +44,11 @@ export default function ProductCard({ product }) {
         {product.isNew && (
           <span className="absolute left-4 top-4 rounded-full bg-terracotta px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white shadow-sm">
             New
+          </span>
+        )}
+        {isOutOfStock && (
+          <span className="absolute right-4 top-4 rounded-full bg-cocoa px-3 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white shadow-sm">
+            Out of Stock
           </span>
         )}
       </Link>
@@ -72,7 +83,10 @@ export default function ProductCard({ product }) {
               {product.rating}
             </span>
           </div>
-          <button type="button" className="button-primary w-full text-xs" onClick={handleAddToCart}>Add to Cart</button>
+          <div className="mb-3 text-xs uppercase tracking-[0.16em] text-stone-400">
+            {isOutOfStock ? 'Currently unavailable' : `${product.stock} ready to ship`}
+          </div>
+          <button type="button" className="button-primary w-full text-xs disabled:cursor-not-allowed disabled:opacity-60" onClick={handleAddToCart} disabled={isOutOfStock}>Add to Cart</button>
         </div>
       </div>
     </div>

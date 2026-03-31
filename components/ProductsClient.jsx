@@ -5,11 +5,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import SectionHeader from '@/components/SectionHeader';
 import ScrollReveal from '@/components/ScrollReveal';
-import { categories, materials, products } from '@/data/products';
+import { useInventory } from '@/context/InventoryContext';
 
 export default function ProductsClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { categories, materials, products } = useInventory();
   const initialCategory = searchParams.get('category') || 'All';
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedMaterial, setSelectedMaterial] = useState('All Materials');
@@ -26,7 +27,7 @@ export default function ProductsClient() {
     setStatus('loading');
     const timer = setTimeout(() => setStatus('ready'), 300);
     return () => clearTimeout(timer);
-  }, [selectedCategory, selectedMaterial, selectedPrice, searchQuery, sortBy]);
+  }, [products, selectedCategory, selectedMaterial, selectedPrice, searchQuery, sortBy]);
 
   const filteredProducts = useMemo(() => {
     let result = products.filter((product) => {
@@ -63,7 +64,7 @@ export default function ProductsClient() {
     }
 
     return result;
-  }, [selectedCategory, selectedMaterial, selectedPrice, searchQuery, sortBy]);
+  }, [products, selectedCategory, selectedMaterial, selectedPrice, searchQuery, sortBy]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);

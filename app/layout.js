@@ -1,6 +1,8 @@
 import './globals.css';
 import LayoutShell from '@/components/LayoutShell';
 import { CartProvider } from '@/context/CartContext';
+import { InventoryProvider } from '@/context/InventoryContext';
+import { OrderProvider } from '@/context/OrderContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { ToastProvider } from '@/context/ToastContext';
 
@@ -22,13 +24,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <CartProvider>
-          <WishlistProvider>
-            <ToastProvider>
-              <LayoutShell>{children}</LayoutShell>
-            </ToastProvider>
-          </WishlistProvider>
-        </CartProvider>
+        <InventoryProvider>
+          <OrderProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <ToastProvider>
+                  <LayoutShell>{children}</LayoutShell>
+                </ToastProvider>
+              </WishlistProvider>
+            </CartProvider>
+          </OrderProvider>
+        </InventoryProvider>
       </body>
     </html>
   );

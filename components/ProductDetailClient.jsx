@@ -1,19 +1,20 @@
 'use client';
 
-import { useMemo, useState, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useCart } from '@/context/CartContext';
+import { useInventory } from '@/context/InventoryContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { useToast } from '@/context/ToastContext';
-import { products } from '@/data/products';
 
 export default function ProductDetailClient({ productId }) {
   const router = useRouter();
-  const product = useMemo(() => products.find((item) => item.id === productId), [productId]);
+  const { isHydrated, products } = useInventory();
+  const product = useMemo(() => products.find((item) => item.id === productId), [productId, products]);
   const [activeImage, setActiveImage] = useState(product?.images?.[0] || '');
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
   const [isZooming, setIsZooming] = useState(false);
@@ -24,8 +25,22 @@ export default function ProductDetailClient({ productId }) {
 
   const relatedProducts = useMemo(
     () => products.filter((item) => item.id !== productId && item.category === product?.category).slice(0, 4),
-    [product, productId]
+    [product, productId, products]
   );
+
+  useEffect(() => {
+    if (product?.images?.length) {
+      setActiveImage(product.images[0]);
+    }
+  }, [product]);
+
+  if (!product && !isHydrated) {
+    return (
+      <section className="container-shell py-16">
+        <div className="premium-panel mx-auto h-[680px] max-w-6xl skeleton-shimmer" />
+      </section>
+    );
+  }
 
   if (!product) {
     return (
@@ -42,11 +57,21 @@ export default function ProductDetailClient({ productId }) {
   const wishlisted = isInWishlist(product.id);
 
   const handleAddToCart = () => {
+    if (product.stock < 1) {
+      addToast(`${product.name} is currently out of stock`, 'error');
+      return;
+    }
+
     addToCart(product);
     addToast(`${product.name} added to cart`);
   };
 
   const handleBuyNow = () => {
+    if (product.stock < 1) {
+      addToast(`${product.name} is currently out of stock`, 'error');
+      return;
+    }
+
     addToCart(product);
     router.push('/cart');
   };
@@ -137,6 +162,9 @@ export default function ProductDetailClient({ productId }) {
                   {product.rating}
                 </span>
                 <span className="rounded-full border border-cocoa/10 px-3 py-1.5 text-xs uppercase tracking-[0.12em] text-stone-500">{product.material}</span>
+                <span className={`rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] ${product.stock > 5 ? 'bg-forest/10 text-forest' : product.stock > 0 ? 'bg-amber-100 text-amber-700' : 'bg-terracotta/10 text-terracotta'}`}>
+                  {product.stock > 5 ? `${product.stock} in stock` : product.stock > 0 ? `Only ${product.stock} left` : 'Out of stock'}
+                </span>
               </div>
 
               <p className="mt-6 text-base leading-8 text-stone-600">{product.description}</p>
@@ -147,8 +175,8 @@ export default function ProductDetailClient({ productId }) {
               </div>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <button type="button" className="button-primary flex-1" onClick={handleAddToCart}>Add to Cart</button>
-                <button type="button" className="button-secondary flex-1" onClick={handleBuyNow}>Buy Now</button>
+                <button type="button" className="button-primary flex-1 disabled:cursor-not-allowed disabled:opacity-60" onClick={handleAddToCart} disabled={product.stock < 1}>Add to Cart</button>
+                <button type="button" className="button-secondary flex-1 disabled:cursor-not-allowed disabled:opacity-60" onClick={handleBuyNow} disabled={product.stock < 1}>Buy Now</button>
               </div>
 
               {/* Artisan Info */}

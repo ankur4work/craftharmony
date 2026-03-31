@@ -1,13 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { useInventory } from '@/context/InventoryContext';
 import { useWishlist } from '@/context/WishlistContext';
-import { products } from '@/data/products';
 import ProductCard from '@/components/ProductCard';
 import ScrollReveal from '@/components/ScrollReveal';
 
 export default function WishlistClient() {
   const { wishlistItems, isHydrated } = useWishlist();
+  const { products } = useInventory();
   const wishlistProducts = products.filter((p) => wishlistItems.includes(p.id));
 
   return (
