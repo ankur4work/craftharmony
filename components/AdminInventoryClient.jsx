@@ -88,9 +88,10 @@ export default function AdminInventoryClient() {
     materials,
     products,
     deleteProduct,
+    refreshProducts,
     upsertProduct,
   } = useInventory();
-  const { isHydrated: ordersHydrated, orders, orderStats } = useOrders();
+  const { isHydrated: ordersHydrated, orders, orderStats, updateOrderStatus, refreshOrders } = useOrders();
   const { addToast } = useToast();
   const [activeProductId, setActiveProductId] = useState('');
   const [isCreatingNew, setIsCreatingNew] = useState(false);
@@ -98,7 +99,7 @@ export default function AdminInventoryClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIds, setSelectedIds] = useState([]);
   const [stockFilter, setStockFilter] = useState('all');
-  const [showOrders, setShowOrders] = useState(false);
+  const [showOrders, setShowOrders] = useState(true);
   const [formState, setFormState] = useState(EMPTY_FORM);
   const [catalogPanelHeight, setCatalogPanelHeight] = useState(null);
   const productWorkspaceRef = useRef(null);
@@ -231,6 +232,14 @@ export default function AdminInventoryClient() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!formState.name.trim()) { addToast('Product name is required', 'error'); return; }
+    if (!formState.category.trim()) { addToast('Category is required', 'error'); return; }
+    if (!formState.material.trim()) { addToast('Material is required', 'error'); return; }
+    if (Number(formState.price) <= 0) { addToast('Price must be greater than 0', 'error'); return; }
+    if (!formState.shortDescription.trim()) { addToast('Short description is required', 'error'); return; }
+    if (!formState.description.trim()) { addToast('Full description is required', 'error'); return; }
+
     setIsSaving(true);
 
     try {
@@ -240,7 +249,7 @@ export default function AdminInventoryClient() {
       };
 
       const savedProduct = await upsertProduct(payload, activeProductId);
-      addToast(activeProductId ? 'Product updated in MongoDB inventory' : 'New product saved to MongoDB inventory');
+      addToast(activeProductId ? 'Product updated successfully' : 'New product added to inventory', 'success');
       setIsCreatingNew(false);
       setActiveProductId(savedProduct.id);
       setFormState(buildFormState(savedProduct));
@@ -261,10 +270,11 @@ export default function AdminInventoryClient() {
 
     try {
       await deleteProduct(activeProduct.id);
-      addToast('Product removed from inventory');
-      setIsCreatingNew(false);
+      addToast('Product removed from inventory', 'success');
       setActiveProductId('');
+      setIsCreatingNew(false);
       setFormState(EMPTY_FORM);
+      setSelectedIds((current) => current.filter((id) => id !== activeProduct.id));
     } catch (error) {
       addToast(error instanceof Error ? error.message : 'Could not delete product', 'error');
     } finally {
@@ -334,10 +344,23 @@ export default function AdminInventoryClient() {
               Oversee the catalog, update inventory, review orders, and keep the storefront presentation sharp across every collection.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             <a href="#product-workspace" onClick={handleCreateNew} className="button-secondary text-xs">
               New Product
             </a>
+            <button type="button" onClick={async () => {
+              try {
+                const res = await fetch('/api/products/sync-defaults', { method: 'POST' });
+                if (res.ok) {
+                  await refreshProducts();
+                  addToast('Catalog synced with default products', 'success');
+                } else {
+                  addToast('Sync failed', 'error');
+                }
+              } catch { addToast('Sync failed', 'error'); }
+            }} className="rounded-full border border-cocoa/12 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
+              Sync Catalog
+            </button>
             <button type="button" onClick={handleLogout} className="rounded-full border border-cocoa/12 bg-white px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
               Logout
             </button>
@@ -347,7 +370,7 @@ export default function AdminInventoryClient() {
 
       <ScrollReveal delay={80}>
         <div className="mt-8 rounded-[2rem] border border-cocoa/10 bg-cocoa p-6 text-white shadow-soft">
-          <div className="grid gap-4 md:grid-cols-4 xl:grid-cols-8">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 xl:grid-cols-8">
             {[
               [`${inventoryStats.totalProducts}`, 'Products'],
               [`${inventoryStats.totalUnits}`, 'Units in stock'],
@@ -372,24 +395,27 @@ export default function AdminInventoryClient() {
         </div>
       </ScrollReveal>
 
-      <div className="hidden">
+      <div>
         <div className="mt-10 premium-panel p-6 md:p-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-400">Orders</p>
-              <h2 className="mt-2 font-serif text-4xl text-cocoa">Recent customer orders</h2>
-              <p className="mt-2 text-sm text-stone-500">Every placed order appears here with shipping details and ordered items.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-stone-400">Order Management</p>
+              <h2 className="mt-2 font-serif text-4xl text-cocoa">Customer orders</h2>
+              <p className="mt-2 text-sm text-stone-500">Manage order status — customers see updates in real time on their tracking page.</p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <div className="rounded-full border border-cocoa/10 bg-sand/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa">
                 {orderStats.totalOrders} total orders
               </div>
+              <button type="button" onClick={() => refreshOrders()} className="rounded-full border border-cocoa/12 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
+                Refresh
+              </button>
               <button
                 type="button"
                 onClick={() => setShowOrders((current) => !current)}
                 className="rounded-full border border-cocoa/12 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand"
               >
-                {showOrders ? 'Hide Orders' : 'View Orders'}
+                {showOrders ? 'Hide Orders' : 'Show Orders'}
               </button>
             </div>
           </div>
@@ -397,22 +423,32 @@ export default function AdminInventoryClient() {
           {showOrders && (orders.length === 0 ? (
             <div className="mt-6 rounded-[1.5rem] border border-dashed border-cocoa/15 bg-sand/20 p-8 text-center">
               <p className="font-serif text-2xl text-cocoa">No orders yet</p>
-              <p className="mt-2 text-sm text-stone-500">Place an order from checkout and it will show up here.</p>
+              <p className="mt-2 text-sm text-stone-500">Orders placed from checkout will appear here.</p>
             </div>
           ) : (
             <div className="mt-6 space-y-4">
-              {orders.map((order) => (
+              {orders.map((order) => {
+                const statusColor = {
+                  Placed: 'bg-amber-100 text-amber-700',
+                  Confirmed: 'bg-blue-50 text-blue-700',
+                  Shipped: 'bg-indigo-50 text-indigo-700',
+                  'Out for Delivery': 'bg-purple-50 text-purple-700',
+                  Delivered: 'bg-forest/10 text-forest',
+                  Cancelled: 'bg-red-50 text-red-600',
+                }[order.status] || 'bg-sand text-cocoa';
+
+                return (
                 <div key={order.id} className="rounded-[1.75rem] border border-cocoa/10 bg-white/70 p-5 shadow-soft">
                   <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="font-serif text-3xl text-cocoa">{order.id}</h3>
-                        <span className="rounded-full bg-forest/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-forest">
+                        <h3 className="font-serif text-2xl text-cocoa sm:text-3xl">{order.id}</h3>
+                        <span className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${statusColor}`}>
                           {order.status}
                         </span>
                       </div>
                       <p className="mt-2 text-sm text-stone-500">
-                        {order.customer.firstName} {order.customer.lastName} · {order.customer.email}
+                        {order.customer.firstName} {order.customer.lastName} · {order.customer.email} · {order.customer.phone}
                       </p>
                       <p className="mt-1 text-sm text-stone-500">
                         {order.shippingAddress.addressLine1}
@@ -425,6 +461,31 @@ export default function AdminInventoryClient() {
                       <p className="mt-1 text-sm text-cocoa">{formatTimestamp(order.placedAt)}</p>
                       <p className="mt-3 font-serif text-3xl text-cocoa">{formatCurrency(order.total)}</p>
                     </div>
+                  </div>
+
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Update Status:</span>
+                    {['Placed', 'Confirmed', 'Shipped', 'Out for Delivery', 'Delivered', 'Cancelled'].map((s) => (
+                      <button
+                        key={s}
+                        type="button"
+                        disabled={order.status === s || isSaving}
+                        onClick={async () => {
+                          setIsSaving(true);
+                          try {
+                            await updateOrderStatus(order.id, s);
+                            addToast(`Order ${order.id} marked as ${s}`, 'success');
+                          } catch (err) {
+                            addToast(err.message || 'Failed to update', 'error');
+                          } finally {
+                            setIsSaving(false);
+                          }
+                        }}
+                        className={`rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.1em] transition ${order.status === s ? 'bg-cocoa text-white' : 'border border-cocoa/10 bg-white text-cocoa hover:bg-sand disabled:opacity-40'}`}
+                      >
+                        {s}
+                      </button>
+                    ))}
                   </div>
 
                   <div className="mt-5 grid gap-3">
@@ -443,13 +504,14 @@ export default function AdminInventoryClient() {
                     ))}
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           ))}
         </div>
       </div>
 
-      <div id="product-workspace" ref={productWorkspaceRef} className="mt-10 grid gap-8 xl:grid-cols-[0.95fr_1.05fr]">
+      <div id="product-workspace" ref={productWorkspaceRef} className="mt-10 grid gap-6 lg:gap-8 xl:grid-cols-[0.95fr_1.05fr]">
         <div className="xl:h-full">
           <div
             className="premium-panel p-5 md:p-6 xl:flex xl:flex-col xl:overflow-hidden"
@@ -529,7 +591,7 @@ export default function AdminInventoryClient() {
                         aria-label={`Select ${product.name}`}
                       />
                       <button type="button" onClick={() => handleEditProduct(product.id)} className="flex flex-1 items-center gap-4 text-left">
-                        <ImageWithFallback src={product.images[0]} alt={product.name} className="h-20 w-20 rounded-[1.2rem] object-cover" />
+                        <ImageWithFallback src={product.images[0]} alt={product.name} className="h-16 w-16 rounded-[1rem] object-cover sm:h-20 sm:w-20 sm:rounded-[1.2rem]" />
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2">
                             <p className="truncate font-serif text-2xl leading-none text-cocoa">{product.name}</p>
@@ -575,9 +637,9 @@ export default function AdminInventoryClient() {
                 </p>
               </div>
               {activeProduct && (
-                <div className="flex gap-3">
-                  <Link href={`/products/${activeProduct.id}`} className="button-secondary px-5 py-3 text-xs">View Live</Link>
-                  <button type="button" onClick={handleDelete} className="rounded-full border border-terracotta/20 bg-terracotta/10 px-5 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-terracotta transition hover:bg-terracotta/15" disabled={isSaving}>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <Link href={`/products/${activeProduct.id}`} className="button-secondary px-4 py-2.5 text-xs sm:px-5 sm:py-3">View Live</Link>
+                  <button type="button" onClick={handleDelete} className="rounded-full border border-terracotta/20 bg-terracotta/10 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-terracotta transition hover:bg-terracotta/15 sm:px-5 sm:py-3" disabled={isSaving}>
                     Delete
                   </button>
                 </div>

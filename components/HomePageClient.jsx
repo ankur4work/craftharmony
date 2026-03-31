@@ -26,7 +26,7 @@ export default function HomePageClient() {
                 <span className="inline-block h-px w-8 bg-terracotta" />
                 India's Finest Handmade Craft
               </p>
-              <h1 className="mt-6 max-w-3xl font-serif text-5xl leading-[0.95] text-cocoa md:text-7xl">
+              <h1 className="mt-6 max-w-3xl font-serif text-3xl leading-[0.95] text-cocoa sm:text-5xl md:text-7xl">
                 Where Ancient Hands Shape Modern Heirlooms
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-stone-500 md:text-lg">
@@ -36,7 +36,7 @@ export default function HomePageClient() {
                 <Link href="/products" className="button-primary">Explore the Collection</Link>
                 <Link href="/about" className="button-secondary">Our Artisan Story</Link>
               </div>
-              <div className="mt-10 grid gap-4 sm:grid-cols-4">
+              <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {[
                   [`${inventoryStats.totalProducts}+`, 'Curated Pieces', `${shopCategories.length} craft categories`],
                   ['25+', 'Artisan Studios', 'Across India'],

@@ -22,7 +22,7 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={{ addToast }}>
       {children}
-      <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none">
+      <div className="fixed bottom-4 left-4 right-4 z-[100] flex flex-col gap-3 pointer-events-none sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm">
         {toasts.map((toast) => (
           <div
             key={toast.id}
@@ -30,7 +30,7 @@ export function ToastProvider({ children }) {
             role="alert"
           >
             <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sand text-sm text-cocoa">
+              <span className={`flex h-8 w-8 items-center justify-center rounded-full text-sm ${toast.type === 'error' ? 'bg-red-50 text-red-600' : toast.type === 'info' ? 'bg-blue-50 text-blue-600' : 'bg-forest/10 text-forest'}`}>
                 {toast.type === 'success' ? '✓' : toast.type === 'error' ? '✕' : 'i'}
               </span>
               <p className="text-sm font-medium text-cocoa">{toast.message}</p>

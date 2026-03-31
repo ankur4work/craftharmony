@@ -431,9 +431,9 @@ export const products = [
     story:
       'Mysore sandalwood is among the most aromatic in the world and has been traded along the Silk Road since antiquity. Each sphere represents years of slow tree growth.',
     images: [
-      'https://cdn.pixabay.com/photo/2013/01/28/18/22/wooden-duck-76478_1280.jpg',
-      'https://cdn.pixabay.com/photo/2012/01/06/01/41/carving-11478_1280.jpg',
-      'https://cdn.pixabay.com/photo/2010/12/17/18/30/hand-3826_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/08/07/19/07/sphere-2607026_1280.jpg',
+      'https://cdn.pixabay.com/photo/2016/11/29/04/42/wood-1867482_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/01/18/15/17/wooden-ball-1990157_1280.jpg',
     ],
     featured: false,
     bestSeller: false,
@@ -529,9 +529,9 @@ export const products = [
     story:
       'Temple bells have marked the rhythm of Indian spiritual life for thousands of years. This garden bell adapts that sacred resonance for everyday domestic joy.',
     images: [
-      'https://cdn.pixabay.com/photo/2017/09/22/13/44/diwali-lamp-2775590_1280.jpg',
-      'https://cdn.pixabay.com/photo/2017/11/06/13/34/diya-2923658_1280.jpg',
-      'https://cdn.pixabay.com/photo/2014/08/07/08/16/diwali-412254_1280.jpg',
+      'https://cdn.pixabay.com/photo/2019/12/17/14/43/bell-4701248_1280.jpg',
+      'https://cdn.pixabay.com/photo/2016/07/31/16/14/bells-1559300_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/01/14/15/11/bell-1979587_1280.jpg',
     ],
     featured: false,
     bestSeller: false,
@@ -553,9 +553,9 @@ export const products = [
     story:
       'Bidriware originated in the 14th-century Bahmani Sultanate and is practised today by fewer than 500 families in the Deccan town of Bidar. Each piece is a living antique.',
     images: [
-      'https://cdn.pixabay.com/photo/2017/09/22/08/18/diwali-festival-2774745_1280.jpg',
-      'https://cdn.pixabay.com/photo/2014/09/28/21/30/light-465350_1280.jpg',
-      'https://cdn.pixabay.com/photo/2013/07/23/23/24/lamp-166490_1280.jpg',
+      'https://cdn.pixabay.com/photo/2020/06/16/19/30/vase-5307612_1280.jpg',
+      'https://cdn.pixabay.com/photo/2016/11/23/15/48/antique-1853813_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/08/01/12/43/vase-2565039_1280.jpg',
     ],
     featured: false,
     bestSeller: false,
@@ -577,9 +577,9 @@ export const products = [
     story:
       'India is the world\u2019s largest producer of hand-hammered copper vessels. The Moscow Mule set is a contemporary format that showcases centuries-old technique.',
     images: [
-      'https://cdn.pixabay.com/photo/2015/03/12/22/54/oktoberfest-670944_1280.jpg',
-      'https://cdn.pixabay.com/photo/2014/08/16/10/41/pans-419249_1280.jpg',
-      'https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/06/06/22/37/cup-2378707_1280.jpg',
+      'https://cdn.pixabay.com/photo/2016/09/28/05/12/copper-vessel-1699780_1280.jpg',
+      'https://cdn.pixabay.com/photo/2018/05/23/10/41/copper-3423413_1280.jpg',
     ],
     featured: false,
     bestSeller: true,
@@ -723,9 +723,9 @@ export const products = [
     story:
       'Gond art originates with the Gond and Pardhan tribes of Madhya Pradesh, who painted their myths on cave walls long before they found canvas. Each creature depicted carries a specific spiritual meaning.',
     images: [
-      'https://cdn.pixabay.com/photo/2020/01/30/16/43/mathura-4805899_1280.jpg',
-      'https://cdn.pixabay.com/photo/2020/01/30/16/43/mathura-4805900_1280.jpg',
-      'https://cdn.pixabay.com/photo/2020/01/30/16/43/mathura-4805901_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/03/23/09/34/abstract-2167546_1280.jpg',
+      'https://cdn.pixabay.com/photo/2016/06/24/16/42/art-1477754_1280.jpg',
+      'https://cdn.pixabay.com/photo/2019/09/30/14/51/art-4516573_1280.jpg',
     ],
     featured: false,
     bestSeller: false,
@@ -747,9 +747,9 @@ export const products = [
     story:
       'Tanjore painting is unique among Indian art forms for its three-dimensional quality. It emerged under the Nayak rulers of Thanjavur as a way to bring temple deities to life in private homes.',
     images: [
-      'https://cdn.pixabay.com/photo/2016/07/11/19/51/free-1510459_1280.jpg',
-      'https://cdn.pixabay.com/photo/2016/10/17/19/25/aditi-rao-hydari-1748439_1280.jpg',
-      'https://cdn.pixabay.com/photo/2015/03/24/14/25/native-indian-687665_1280.jpg',
+      'https://cdn.pixabay.com/photo/2017/10/26/10/03/diwali-2890605_1280.jpg',
+      'https://cdn.pixabay.com/photo/2014/10/31/10/00/ganpati-510818_1280.jpg',
+      'https://cdn.pixabay.com/photo/2015/08/17/12/58/ganesha-891788_1280.jpg',
     ],
     featured: false,
     bestSeller: false,
@@ -1113,9 +1113,9 @@ export const products = [
     story:
       'Jodhpur\u2019s ironworkers historically forged weapons and fortress gates for Marwar kings. Today they channel that same muscular craft into decorative pieces for modern homes.',
     images: [
-      'https://cdn.pixabay.com/photo/2015/08/18/15/21/moroccan-894318_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/11/27/15/14/lanterns-547681_1280.jpg',
       'https://cdn.pixabay.com/photo/2020/03/17/22/52/lamp-4942111_1280.jpg',
+      'https://cdn.pixabay.com/photo/2016/11/14/02/58/lantern-1822980_1280.jpg',
     ],
     featured: false,
     bestSeller: false,

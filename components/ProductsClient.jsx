@@ -10,10 +10,9 @@ import { useInventory } from '@/context/InventoryContext';
 export default function ProductsClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { categories, materials, products } = useInventory();
+  const { categories, products } = useInventory();
   const initialCategory = searchParams.get('category') || 'All';
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const [selectedMaterial, setSelectedMaterial] = useState('All Materials');
   const [selectedPrice, setSelectedPrice] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('default');
@@ -27,12 +26,11 @@ export default function ProductsClient() {
     setStatus('loading');
     const timer = setTimeout(() => setStatus('ready'), 300);
     return () => clearTimeout(timer);
-  }, [products, selectedCategory, selectedMaterial, selectedPrice, searchQuery, sortBy]);
+  }, [products, selectedCategory, selectedPrice, searchQuery, sortBy]);
 
   const filteredProducts = useMemo(() => {
     let result = products.filter((product) => {
       const categoryMatch = selectedCategory === 'All' || product.category === selectedCategory;
-      const materialMatch = selectedMaterial === 'All Materials' || product.material === selectedMaterial;
       const priceMatch =
         selectedPrice === 'all' ||
         (selectedPrice === 'under75' && product.price < 75) ||
@@ -45,7 +43,7 @@ export default function ProductsClient() {
         product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.artisan.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.material.toLowerCase().includes(searchQuery.toLowerCase());
-      return categoryMatch && materialMatch && priceMatch && searchMatch;
+      return categoryMatch && priceMatch && searchMatch;
     });
 
     switch (sortBy) {
@@ -64,7 +62,7 @@ export default function ProductsClient() {
     }
 
     return result;
-  }, [products, selectedCategory, selectedMaterial, selectedPrice, searchQuery, sortBy]);
+  }, [products, selectedCategory, selectedPrice, searchQuery, sortBy]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -77,14 +75,13 @@ export default function ProductsClient() {
 
   const clearFilters = () => {
     setSelectedCategory('All');
-    setSelectedMaterial('All Materials');
     setSelectedPrice('all');
     setSearchQuery('');
     setSortBy('default');
     router.replace('/products');
   };
 
-  const hasActiveFilters = selectedCategory !== 'All' || selectedMaterial !== 'All Materials' || selectedPrice !== 'all' || searchQuery;
+  const hasActiveFilters = selectedCategory !== 'All' || selectedPrice !== 'all' || searchQuery;
 
   return (
     <section className="container-shell py-10 md:py-16">
@@ -112,7 +109,7 @@ export default function ProductsClient() {
           </div>
 
           {/* Filter Row */}
-          <div className="grid gap-4 rounded-2xl border border-cocoa/10 bg-white/70 p-5 shadow-soft md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 rounded-2xl border border-cocoa/10 bg-white/70 p-4 shadow-soft sm:p-5 md:grid-cols-3">
             <div>
               <p className="mb-2.5 text-xs font-semibold uppercase tracking-[0.24em] text-stone-400">Category</p>
               <div className="flex flex-wrap gap-2">
@@ -127,13 +124,6 @@ export default function ProductsClient() {
                   </button>
                 ))}
               </div>
-            </div>
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-[0.24em] text-stone-400">Material
-                <select value={selectedMaterial} onChange={(e) => setSelectedMaterial(e.target.value)} className="mt-2.5 h-10 w-full rounded-xl border border-cocoa/10 bg-white px-3 text-sm text-cocoa outline-none transition focus:border-cocoa">
-                  {materials.map((material) => <option key={material}>{material}</option>)}
-                </select>
-              </label>
             </div>
             <div>
               <label className="block text-xs font-semibold uppercase tracking-[0.24em] text-stone-400">Price
@@ -179,7 +169,7 @@ export default function ProductsClient() {
           ))}
         </div>
       ) : (
-        <div className="mt-10 grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-10 grid items-stretch gap-4 sm:gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {filteredProducts.length ? (
             filteredProducts.map((product, i) => (
               <ScrollReveal key={product.id} delay={i * 60}>

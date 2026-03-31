@@ -1,41 +1,75 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { getStoredOrders, setStoredOrders } from '@/utils/storage';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 const OrderContext = createContext();
-
-function createOrderId() {
-  const stamp = Date.now().toString().slice(-8);
-  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
-  return `CH-${stamp}-${suffix}`;
-}
 
 export function OrderProvider({ children }) {
   const [orders, setOrders] = useState([]);
   const [isHydrated, setIsHydrated] = useState(false);
 
-  useEffect(() => {
-    setOrders(getStoredOrders());
-    setIsHydrated(true);
+  const fetchAllOrders = useCallback(async () => {
+    try {
+      const res = await fetch('/api/orders', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      setOrders(data.orders || []);
+    } catch {
+      // silent fail — admin-only fetch
+    }
+  }, []);
+
+  const fetchOrdersByEmail = useCallback(async (email) => {
+    if (!email) return [];
+    try {
+      const res = await fetch(`/api/orders?email=${encodeURIComponent(email)}`, { cache: 'no-store' });
+      if (!res.ok) return [];
+      const data = await res.json();
+      return data.orders || [];
+    } catch {
+      return [];
+    }
   }, []);
 
   useEffect(() => {
-    if (!isHydrated) return;
-    setStoredOrders(orders);
-  }, [isHydrated, orders]);
+    fetchAllOrders().finally(() => setIsHydrated(true));
+  }, [fetchAllOrders]);
 
-  const placeOrder = (orderPayload) => {
-    const order = {
-      id: createOrderId(),
-      status: 'Placed',
-      placedAt: new Date().toISOString(),
-      ...orderPayload,
-    };
+  const placeOrder = useCallback(async (orderPayload) => {
+    const res = await fetch('/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderPayload),
+    });
 
-    setOrders((current) => [order, ...current]);
-    return order;
-  };
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || 'Failed to place order');
+    }
+
+    const data = await res.json();
+    setOrders((current) => [data.order, ...current]);
+    return data.order;
+  }, []);
+
+  const updateOrderStatus = useCallback(async (orderId, status) => {
+    const res = await fetch('/api/orders', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ orderId, status }),
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || 'Failed to update order');
+    }
+
+    const data = await res.json();
+    setOrders((current) =>
+      current.map((o) => (o.id === orderId ? data.order : o))
+    );
+    return data.order;
+  }, []);
 
   const orderStats = useMemo(() => {
     return orders.reduce(
@@ -51,7 +85,15 @@ export function OrderProvider({ children }) {
   }, [orders]);
 
   return (
-    <OrderContext.Provider value={{ orders, orderStats, placeOrder, isHydrated }}>
+    <OrderContext.Provider value={{
+      orders,
+      orderStats,
+      placeOrder,
+      updateOrderStatus,
+      fetchOrdersByEmail,
+      refreshOrders: fetchAllOrders,
+      isHydrated,
+    }}>
       {children}
     </OrderContext.Provider>
   );

@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
         <ImageWithFallback
           src={product.images[0]}
           alt={product.name}
-          className="h-72 w-full object-cover"
+          className="h-56 w-full object-cover sm:h-72"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />

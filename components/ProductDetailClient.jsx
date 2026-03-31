@@ -112,7 +112,7 @@ export default function ProductDetailClient({ productId }) {
                 <ImageWithFallback
                   src={activeImage}
                   alt={product.name}
-                  className="h-[500px] w-full object-cover transition duration-500 md:h-[580px]"
+                  className="h-[320px] w-full object-cover transition duration-500 sm:h-[500px] md:h-[580px]"
                   style={isZooming ? { transform: 'scale(1.6)', transformOrigin: `${zoomPos.x}% ${zoomPos.y}%` } : {}}
                 />
                 <div className={`pointer-events-none absolute inset-0 bg-black/5 transition duration-300 ${isZooming ? 'opacity-100' : 'opacity-0'}`} />

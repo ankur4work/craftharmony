@@ -10,6 +10,7 @@ import NavLinkItem from '@/components/NavLinkItem';
 const navItems = [
   { label: 'Home', path: '/' },
   { label: 'Shop', path: '/products' },
+  { label: 'Orders', path: '/orders' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' },
 ];
