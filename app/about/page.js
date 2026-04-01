@@ -4,22 +4,22 @@ import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata = {
   title: 'About CraftHarmony | Our Mission & Artisan Partners',
-  description: 'CraftHarmony connects India\'s finest artisans with conscious collectors worldwide. Learn about our mission, process, and the 25+ studios we partner with.',
+  description: 'CraftHarmony connects Singapore\'s finest artisans with conscious collectors worldwide. Learn about our mission, process, and the 25+ studios we partner with.',
 };
 
 const values = [
   {
     eyebrow: 'Mission',
     title: 'Sustain living traditions',
-    copy: 'We create a premium digital stage for India\'s endangered craft traditions — ensuring master artisans earn fair value while their techniques survive for future generations.',
+    copy: 'We create a premium digital stage for Singapore\'s finest craft traditions — ensuring master artisans earn fair value while their techniques survive for future generations.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     ),
   },
   {
     eyebrow: 'Vision',
-    title: 'Indian craft, global homes',
-    copy: 'From a Bandra apartment to a Brooklyn brownstone, from a London townhouse to a Tokyo loft — CraftHarmony makes India\'s artisan heritage accessible to design-conscious spaces worldwide.',
+    title: 'Singaporean craft, global homes',
+    copy: 'From an Orchard Road apartment to a Brooklyn brownstone, from a London townhouse to a Tokyo loft — CraftHarmony makes Singapore\'s artisan heritage accessible to design-conscious spaces worldwide.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
     ),
@@ -27,7 +27,7 @@ const values = [
   {
     eyebrow: 'Impact',
     title: 'Zero middlemen, full transparency',
-    copy: 'Every rupee you spend goes directly to the artisan cooperative or studio. No agents, no wholesalers, no exploitation. We publish origin stories, artisan names, and fair-trade documentation for every piece.',
+    copy: 'Every dollar you spend goes directly to the artisan cooperative or studio. No agents, no wholesalers, no exploitation. We publish origin stories, artisan names, and fair-trade documentation for every piece.',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     ),
@@ -35,21 +35,21 @@ const values = [
 ];
 
 const processSteps = [
-  { step: '01', title: 'Scout', description: 'We travel to artisan clusters across India — from Jaipur\'s Johari Bazaar to Srinagar\'s old city, from Moradabad\'s brass foundries to Kutch\'s weaver villages — seeking masters whose craft carries cultural weight and material integrity.' },
+  { step: '01', title: 'Scout', description: 'We visit artisan clusters across Singapore — from Chinatown\'s heritage shophouses to Kampong Glam\'s craft ateliers, from Little India\'s brass workshops to Katong\'s Peranakan studios — seeking masters whose craft carries cultural weight and material integrity.' },
   { step: '02', title: 'Curate', description: 'Only 1 in 20 pieces we evaluate makes it to the collection. Each is selected for exceptional craftsmanship, compelling provenance, and the ability to transform a modern living space.' },
   { step: '03', title: 'Document', description: 'We photograph each piece in natural light, record the artisan\'s story, detail the materials and techniques, and trace the craft tradition\'s history. Every listing reads like a museum exhibit.' },
   { step: '04', title: 'Deliver', description: 'Custom packaging designed for each product category — ceramic cradles, textile acid-free wraps, brass tarnish-proof sleeves. Your piece arrives exactly as it left the artisan\'s hands.' },
 ];
 
 const craftCities = [
-  { city: 'Jaipur', craft: 'Block printing, Kundan jewelry, blue pottery' },
-  { city: 'Srinagar', craft: 'Walnut woodcarving, papier-mâché, pashmina' },
-  { city: 'Moradabad', craft: 'Brassware, copper hammering, metalwork' },
-  { city: 'Varanasi', craft: 'Silk weaving, brass diyas, Banarasi brocade' },
-  { city: 'Kutch', craft: 'Ajrakh printing, mirror embroidery, Rogan art' },
-  { city: 'Cuttack', craft: 'Tarakasi silver filigree' },
-  { city: 'Lucknow', craft: 'Zardozi embroidery, chikankari' },
-  { city: 'Channapatna', craft: 'Lacquerware, wooden toys' },
+  { city: 'Chinatown', craft: 'Traditional ceramics, calligraphy art, lacquerware' },
+  { city: 'Kampong Glam', craft: 'Batik textiles, perfumery, woven crafts' },
+  { city: 'Little India', craft: 'Brassware, copper hammering, metalwork' },
+  { city: 'Katong', craft: 'Peranakan beadwork, porcelain, embroidery' },
+  { city: 'Joo Chiat', craft: 'Heritage woodcraft, furniture restoration' },
+  { city: 'Haji Lane', craft: 'Silver filigree, artisan jewelry' },
+  { city: 'Tiong Bahru', craft: 'Contemporary ceramics, modern craft' },
+  { city: 'Dempsey Hill', craft: 'Art glass, sculptural lighting' },
 ];
 
 export default function AboutPage() {
@@ -65,10 +65,10 @@ export default function AboutPage() {
                 About CraftHarmony
               </p>
               <h1 className="mt-4 font-serif text-5xl leading-[0.95] text-cocoa md:text-6xl">
-                India's craft heritage deserves more than a dusty shelf in a tourist market.
+                Singapore's craft heritage deserves more than a dusty shelf in a tourist market.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-stone-500">
-                We partner with 25+ artisan studios across 20+ Indian cities to bring you museum-worthy handmade objects at fair prices. No middlemen. No mass production. No compromise.
+                We partner with 25+ artisan studios across Singapore to bring you museum-worthy handmade objects at fair prices. No middlemen. No mass production. No compromise.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link href="/products" className="button-primary">Shop the Collection</Link>
@@ -135,7 +135,7 @@ export default function AboutPage() {
           <ScrollReveal>
             <div className="mx-auto max-w-3xl text-center">
               <p className="eyebrow">Our Artisan Network</p>
-              <h2 className="mt-3 font-serif text-4xl text-cocoa md:text-5xl">Sourced from India's legendary craft cities</h2>
+              <h2 className="mt-3 font-serif text-4xl text-cocoa md:text-5xl">Sourced from Singapore's legendary craft districts</h2>
               <p className="mt-4 text-base leading-8 text-stone-500">Each city has shaped its own unique craft identity over centuries. We bring the best of each to you.</p>
             </div>
           </ScrollReveal>

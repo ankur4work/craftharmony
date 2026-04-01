@@ -40,7 +40,7 @@ const sections = [
   },
   {
     heading: 'Governing Law',
-    body: 'These terms are governed by the laws of India. Any disputes arising from these terms or use of the website shall be resolved through arbitration or in the courts of Jaipur, Rajasthan.',
+    body: 'These terms are governed by the laws of Singapore. Any disputes arising from these terms or use of the website shall be resolved through arbitration or in the courts of Singapore.',
   },
   {
     heading: 'Changes to Terms',

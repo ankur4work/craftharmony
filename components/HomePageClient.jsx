@@ -24,7 +24,7 @@ export default function HomePageClient() {
             <div className="premium-panel h-full overflow-hidden bg-[linear-gradient(135deg,rgba(255,250,245,0.95),rgba(232,214,200,0.75))] p-8 md:p-12">
               <p className="eyebrow">
                 <span className="inline-block h-px w-8 bg-terracotta" />
-                India's Finest Handmade Craft
+                Singapore's Finest Handmade Craft
               </p>
               <h1 className="mt-6 max-w-3xl font-serif text-3xl leading-[0.95] text-cocoa sm:text-5xl md:text-7xl">
                 Where Ancient Hands Shape Modern Heirlooms
@@ -39,7 +39,7 @@ export default function HomePageClient() {
               <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {[
                   [`${inventoryStats.totalProducts}+`, 'Curated Pieces', `${shopCategories.length} craft categories`],
-                  ['25+', 'Artisan Studios', 'Across India'],
+                  ['25+', 'Artisan Studios', 'Across Singapore'],
                   [`${inventoryStats.totalUnits}+`, 'Units in Stock', 'Managed in real time'],
                   ['4.8/5', 'Collector Rating', 'Trusted by designers'],
                 ].map(([value, label, sublabel]) => (
@@ -57,7 +57,7 @@ export default function HomePageClient() {
               <div className="zoom-container premium-panel overflow-hidden p-3">
                 <ImageWithFallback
                   src="https://cdn.pixabay.com/photo/2016/02/24/15/36/clay-1220105_1280.jpg"
-                  alt="Indian artisan hand-painting traditional pottery in a sunlit workshop"
+                  alt="Artisan hand-painting traditional pottery in a sunlit workshop"
                   className="h-[320px] w-full rounded-[1.6rem] object-cover md:h-[360px]"
                 />
               </div>
@@ -67,7 +67,7 @@ export default function HomePageClient() {
                 <div className="zoom-container premium-panel overflow-hidden p-3">
                   <ImageWithFallback
                     src="https://cdn.pixabay.com/photo/2017/10/26/10/03/diwali-2890605_1280.jpg"
-                    alt="Ornate brass diyas and traditional Indian metalwork"
+                    alt="Ornate brass diyas and traditional metalwork"
                     className="h-44 w-full rounded-[1.4rem] object-cover"
                   />
                 </div>
@@ -76,7 +76,7 @@ export default function HomePageClient() {
                 <div className="zoom-container premium-panel overflow-hidden p-3">
                   <ImageWithFallback
                     src="https://cdn.pixabay.com/photo/2015/04/22/15/08/saree-734917_1280.jpg"
-                    alt="Handwoven Indian textiles with rich indigo block-print patterns"
+                    alt="Handwoven textiles with rich indigo block-print patterns"
                     className="h-44 w-full rounded-[1.4rem] object-cover"
                   />
                 </div>
@@ -108,7 +108,7 @@ export default function HomePageClient() {
           <ScrollReveal>
             <SectionHeader
               eyebrow="Curated Collections"
-              title="Every craft tells a different chapter of India's story"
+              title="Every craft tells a different chapter of Singapore's story"
               description="Collections stay in sync with the live inventory, so category pages and hero counts update together."
               centered
             />
@@ -209,7 +209,7 @@ export default function HomePageClient() {
                   {String(index + 1).padStart(2, '0')}
                 </div>
                 <h3 className="mt-5 font-serif text-2xl text-cocoa transition group-hover:text-terracotta">{category}</h3>
-                <p className="mt-3 flex-1 text-sm leading-7 text-stone-500">Handcrafted pieces rooted in centuries of Indian artisan heritage.</p>
+                <p className="mt-3 flex-1 text-sm leading-7 text-stone-500">Handcrafted pieces rooted in centuries of Singaporean artisan heritage.</p>
                 <span className="mt-auto flex items-center gap-1 pt-5 text-xs font-semibold uppercase tracking-[0.1em] text-cocoa transition group-hover:gap-2">
                   Browse Collection
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>

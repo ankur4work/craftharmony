@@ -34,14 +34,14 @@ export const products = [
     material: 'Ceramic',
     price: 138,
     rating: 4.9,
-    origin: 'Khurja, India',
-    artisan: 'Neelam Pottery Collective',
+    origin: 'Chinatown, Singapore',
+    artisan: 'Orchid Row Ceramics',
     dimensions: '14 in x 7 in',
-    shortDescription: 'A cloud-glazed stoneware vase inspired by the first rains over the Gangetic plain.',
+    shortDescription: 'A cloud-glazed stoneware vase inspired by the first rains over the Singapore Strait.',
     description:
-      'Hand-thrown on a kick wheel in the centuries-old pottery town of Khurja, this vase captures the moody beauty of monsoon skies in its layered grey-blue glaze. Each piece is fired twice to achieve its signature depth and satin finish. Place it alone as a sculptural accent or let wildflowers spill from its generous mouth.',
+      'Hand-thrown on a kick wheel in the centuries-old pottery tradition of Chinatown district, this vase captures the moody beauty of monsoon skies in its layered grey-blue glaze. Each piece is fired twice to achieve its signature depth and satin finish. Place it alone as a sculptural accent or let wildflowers spill from its generous mouth.',
     story:
-      'Khurja has been shaping ceramics since the 14th century, earning the title "Ceramic City" of India. This vase channels that deep lineage through a distinctly modern silhouette.',
+      'Singapore\u2019s Chinatown district has been shaping ceramics for generations, earning a reputation as a centre of ceramic excellence. This vase channels that deep lineage through a distinctly modern silhouette.',
     images: [
       'https://cdn.pixabay.com/photo/2022/06/10/15/57/ceramic-vase-7254826_1280.jpg',
       'https://cdn.pixabay.com/photo/2020/12/08/00/11/vase-5813124_1280.jpg',
@@ -58,14 +58,14 @@ export const products = [
     material: 'Terracotta',
     price: 78,
     rating: 4.7,
-    origin: 'Jaipur, India',
-    artisan: 'Meera Studio',
+    origin: 'Joo Chiat, Singapore',
+    artisan: 'Peranakan Craft Collective',
     dimensions: '10 in x 10 in',
     shortDescription: 'A rustic planter etched with folk motifs, celebrating the potter\u2019s ancient bond with soil.',
     description:
-      'Shaped from the pink clay of Rajasthan and dried under the desert sun, this planter carries delicate hand-carved patterns inspired by village rangoli. Its unglazed surface breathes naturally, making it ideal for succulents and herbs. The warm terracotta tone deepens beautifully with age and weathering.',
+      'Shaped from locally sourced clay and dried under the tropical sun, this planter carries delicate hand-carved patterns inspired by Peranakan tile motifs. Its unglazed surface breathes naturally, making it ideal for succulents and herbs. The warm terracotta tone deepens beautifully with age and weathering.',
     story:
-      'Jaipur\u2019s kumhars have shaped terracotta for over a thousand years, passing techniques from parent to child. Each scratch of the carving tool is a line in an unbroken oral tradition.',
+      'Joo Chiat\u2019s potters have shaped terracotta for generations, passing techniques from parent to child. Each scratch of the carving tool is a line in an unbroken oral tradition.',
     images: [
       'https://cdn.pixabay.com/photo/2022/08/28/16/13/vases-7417040_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/10/22/18/41/pot-498662_1280.jpg',
@@ -82,14 +82,14 @@ export const products = [
     material: 'Ceramic',
     price: 96,
     rating: 4.8,
-    origin: 'Khurja, India',
-    artisan: 'Asharfi Ceramics',
+    origin: 'Chinatown, Singapore',
+    artisan: 'Shophouse Studio',
     dimensions: '12 in x 4 in',
     shortDescription: 'A statement serving bowl with concentric indigo rings, perfect for gatherings.',
     description:
-      'This generous bowl wears hand-painted indigo rings that ripple outward like water in a temple tank. Crafted from high-fire stoneware in Khurja, it is food-safe, microwave-friendly, and built to last through decades of shared meals. Its organic rim is left slightly irregular by design.',
+      'This generous bowl wears hand-painted indigo rings that ripple outward like water in a temple tank. Crafted from high-fire stoneware in Chinatown district, it is food-safe, microwave-friendly, and built to last through decades of shared meals. Its organic rim is left slightly irregular by design.',
     story:
-      'The indigo dye tradition once linked Khurja\u2019s potters with Rajasthan\u2019s textile dyers, creating a cross-craft colour vocabulary. This bowl honours that forgotten partnership.',
+      'The indigo dye tradition once linked Singapore\u2019s potters with its textile dyers, creating a cross-craft colour vocabulary. This bowl honours that forgotten partnership.',
     images: [
       'https://cdn.pixabay.com/photo/2016/11/19/11/40/bowl-1838797_1280.jpg',
       'https://cdn.pixabay.com/photo/2017/06/17/08/25/pottery-2411515_1280.jpg',
@@ -106,14 +106,14 @@ export const products = [
     material: 'Ceramic',
     price: 185,
     rating: 4.9,
-    origin: 'Jaipur, India',
-    artisan: 'Meera Studio',
+    origin: 'Joo Chiat, Singapore',
+    artisan: 'Peranakan Craft Collective',
     dimensions: '8 in, 10 in, 12 in (set)',
-    shortDescription: 'Three graduated vases in sandy rose tones, evoking Thar Desert wildflowers at dawn.',
+    shortDescription: 'Three graduated vases in sandy rose tones, evoking tropical garden blooms at dawn.',
     description:
-      'This curated set of three hand-thrown vessels moves through a tonal gradient from blush to deep sienna, mimicking the colour shift of desert sand at sunrise. Each piece wears a reactive glaze that produces unique crystalline patterns during firing. Display them grouped for maximum drama or scatter them across a mantel.',
+      'This curated set of three hand-thrown vessels moves through a tonal gradient from blush to deep sienna, mimicking the colour shift of tropical sand at sunrise. Each piece wears a reactive glaze that produces unique crystalline patterns during firing. Display them grouped for maximum drama or scatter them across a mantel.',
     story:
-      'Inspired by the brief, fierce blooming season of the Thar, when entire dunes blush pink with wild marigold and khejri flowers. The potters call this collection "pehli baarish" \u2014 the first rain.',
+      'Inspired by the brief, fierce blooming season of Singapore\u2019s Botanic Gardens, when entire beds blush pink with wild orchids and frangipani. The potters call this collection their "first rain" series.',
     images: [
       'https://cdn.pixabay.com/photo/2018/03/21/10/20/ceramic-3246182_1280.jpg',
       'https://cdn.pixabay.com/photo/2022/11/11/19/41/vase-7585699_1280.jpg',
@@ -130,14 +130,14 @@ export const products = [
     material: 'Ceramic',
     price: 112,
     rating: 4.6,
-    origin: 'Pondicherry, India',
-    artisan: 'Auroville Earth Centre',
+    origin: 'Tiong Bahru, Singapore',
+    artisan: 'Botanic Craft Guild',
     dimensions: '3.5 in x 3 in each (set of 4)',
-    shortDescription: 'Four coastal-blue cups shaped by hand in Auroville\u2019s communal pottery studio.',
+    shortDescription: 'Four coastal-blue cups shaped by hand in Tiong Bahru\u2019s communal pottery studio.',
     description:
-      'Glazed in the vivid azure of the Bay of Bengal, these teacups bring the spirit of Pondicherry\u2019s French Quarter to your morning ritual. Each cup is slightly different in form, a deliberate celebration of human touch over machine uniformity. The matte exterior contrasts with a glossy interior for tactile delight.',
+      'Glazed in the vivid azure of the Singapore Strait, these teacups bring the spirit of Tiong Bahru\u2019s heritage quarter to your morning ritual. Each cup is slightly different in form, a deliberate celebration of human touch over machine uniformity. The matte exterior contrasts with a glossy interior for tactile delight.',
     story:
-      'The Auroville Earth Centre trains artisans from surrounding Tamil villages in contemporary ceramic techniques, weaving new livelihoods from ancient clay traditions.',
+      'The Botanic Craft Guild trains artisans from surrounding neighbourhoods in contemporary ceramic techniques, weaving new livelihoods from heritage clay traditions.',
     images: [
       'https://cdn.pixabay.com/photo/2016/03/05/23/02/teacup-1239437_1280.jpg',
       'https://cdn.pixabay.com/photo/2017/05/19/07/34/teacup-2325722_1280.jpg',
@@ -154,14 +154,14 @@ export const products = [
     material: 'Terracotta',
     price: 58,
     rating: 4.7,
-    origin: 'Khurja, India',
-    artisan: 'Neelam Pottery Collective',
+    origin: 'Chinatown, Singapore',
+    artisan: 'Orchid Row Ceramics',
     dimensions: '6 in x 5 in',
     shortDescription: 'A sculpted terracotta diffuser that doubles as a tabletop art piece.',
     description:
       'Carved to resemble a half-opened lotus bud, this diffuser releases essential oils slowly through its porous terracotta body. No electricity or candles needed \u2014 just add a few drops of oil and let the clay do the rest. Its warm amber wash catches lamplight beautifully on bedside tables.',
     story:
-      'Terracotta\u2019s natural porosity has been used for cooling water in Indian homes for millennia. This diffuser simply redirects that ancient principle toward modern aromatherapy.',
+      'Terracotta\u2019s natural porosity has been used for cooling water in Singaporean homes for generations. This diffuser simply redirects that ancient principle toward modern aromatherapy.',
     images: [
       'https://cdn.pixabay.com/photo/2020/04/29/16/10/vase-5109481_1280.jpg',
       'https://cdn.pixabay.com/photo/2022/07/18/14/51/ceramics-7330105_1280.jpg',
@@ -180,14 +180,14 @@ export const products = [
     material: 'Cotton',
     price: 245,
     rating: 5.0,
-    origin: 'Bhuj, India',
-    artisan: 'Kala Raksha Weavers',
+    origin: 'Kampong Glam, Singapore',
+    artisan: 'Straits Heritage Atelier',
     dimensions: '6.3 yards x 47 in',
     shortDescription: 'A masterwork of resist-dyeing in twelve shades of indigo, woven on a pit loom.',
     description:
-      'This saree is dipped and re-dipped in natural indigo vats over seven days, building a depth of blue that shifts like storm clouds. The border features tiny bandhani dots tied by hand \u2014 over two thousand per metre. Lightweight and breathable, it drapes like water and improves with every wash.',
+      'This saree is dipped and re-dipped in natural indigo vats over seven days, building a depth of blue that shifts like storm clouds. The border features tiny batik dots applied by hand \u2014 over two thousand per metre. Lightweight and breathable, it drapes like water and improves with every wash.',
     story:
-      'Kutch\u2019s indigo dyers have traded their cloth across the Arabian Sea for centuries. Each saree carries the salt-wind memory of that maritime heritage.',
+      'Katong\u2019s indigo dyers have traded their cloth across the South China Sea for centuries. Each saree carries the salt-wind memory of that maritime heritage.',
     images: [
       'https://cdn.pixabay.com/photo/2015/04/22/15/08/saree-734917_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/06/02/14/27/saree-360372_1280.jpg',
@@ -204,14 +204,14 @@ export const products = [
     material: 'Silk',
     price: 320,
     rating: 4.9,
-    origin: 'Varanasi, India',
-    artisan: 'Gulam Rasool Handlooms',
+    origin: 'Kampong Glam, Singapore',
+    artisan: 'Raffles Weave Studio',
     dimensions: '80 in x 28 in',
-    shortDescription: 'A Banarasi silk stole in midnight plum, woven with antique zari motifs.',
+    shortDescription: 'A heritage silk stole in midnight plum, woven with antique zari motifs.',
     description:
-      'Woven on a jacquard handloom in the gullies of Varanasi, this stole features real silver-gilt zari thread forming jali and buta patterns drawn from Mughal miniatures. The silk is so fine it can pass through a ring. At barely 120 grams, it adds warmth without weight to evening wear.',
+      'Woven on a jacquard handloom in the lanes of Kampong Glam, this stole features real silver-gilt zari thread forming jali and buta patterns drawn from colonial-era miniatures. The silk is so fine it can pass through a ring. At barely 120 grams, it adds warmth without weight to evening wear.',
     story:
-      'Varanasi\u2019s silk-weaving tradition dates back over two thousand years and is inscribed in Buddhist Jataka tales. Each stole takes a master weaver three to four weeks to complete.',
+      'Kampong Glam\u2019s silk-weaving tradition dates back generations and is deeply woven into Singapore\u2019s textile heritage. Each stole takes a master weaver three to four weeks to complete.',
     images: [
       'https://cdn.pixabay.com/photo/2018/09/11/20/43/silk-3670576_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/12/17/19/10/silk-571834_1280.jpg',
@@ -228,14 +228,14 @@ export const products = [
     material: 'Cotton',
     price: 165,
     rating: 4.8,
-    origin: 'Shantiniketan, India',
-    artisan: 'Bolpur Stitch Collective',
+    origin: 'Little India, Singapore',
+    artisan: 'Kampong Artisan Studio',
     dimensions: '60 in x 90 in',
-    shortDescription: 'Six layers of vintage cotton stitched together with running kantha embroidery in warm saffron.',
+    shortDescription: 'Six layers of vintage cotton stitched together with running quilting embroidery in warm saffron.',
     description:
-      'Made from recycled cotton saris layered and stitched with thousands of tiny running stitches, this kantha throw is an act of patience transformed into a textile. The saffron and ochre palette evokes sunrise over Bengal\u2019s rice paddies. It grows softer and more supple with every use and wash.',
+      'Made from recycled cotton textiles layered and stitched with thousands of tiny running stitches, this quilted throw is an act of patience transformed into a textile. The saffron and ochre palette evokes sunrise over Singapore\u2019s harbour. It grows softer and more supple with every use and wash.',
     story:
-      'Kantha stitching was originally a way for Bengali women to repurpose worn saris into quilts for newborns. What began as thrift became one of India\u2019s most beloved textile arts.',
+      'Quilting was originally a way for Peranakan women to repurpose worn textiles into quilts for newborns. What began as thrift became one of Singapore\u2019s most beloved textile arts.',
     images: [
       'https://cdn.pixabay.com/photo/2017/10/01/10/33/fabric-2804900_1280.jpg',
       'https://cdn.pixabay.com/photo/2023/08/13/13/52/fabric-8187543_1280.jpg',
@@ -252,14 +252,14 @@ export const products = [
     material: 'Cotton',
     price: 280,
     rating: 4.7,
-    origin: 'Bhuj, India',
-    artisan: 'Shrujan Trust Artisans',
+    origin: 'Katong, Singapore',
+    artisan: 'Straits Heritage Atelier',
     dimensions: '4 ft x 6 ft',
-    shortDescription: 'A flatweave rug in smouldering reds and charcoal, woven by Kutchi women artisans.',
+    shortDescription: 'A flatweave rug in smouldering reds and charcoal, woven by Katong women artisans.',
     description:
-      'This dhurrie is woven on a horizontal pit loom using hand-spun cotton in colours derived from madder root and iron rust. Its geometric pattern is a regional signature passed down through the Rabari community. Reversible and durable, it anchors a living room with warmth and narrative.',
+      'This dhurrie is woven on a horizontal pit loom using hand-spun cotton in colours derived from madder root and iron rust. Its geometric pattern is a regional signature passed down through the Peranakan community. Reversible and durable, it anchors a living room with warmth and narrative.',
     story:
-      'Kutch\u2019s nomadic Rabari women have woven dhurries as part of their dowry tradition for generations. Each motif encodes family identity and clan history.',
+      'Katong\u2019s Peranakan women have woven dhurries as part of their heritage tradition for generations. Each motif encodes family identity and clan history.',
     images: [
       'https://cdn.pixabay.com/photo/2014/04/05/11/29/carpets-315873_1280.jpg',
       'https://cdn.pixabay.com/photo/2015/12/11/18/08/rug-1088557_1280.jpg',
@@ -276,14 +276,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 450,
     rating: 5.0,
-    origin: 'Srinagar, India',
-    artisan: 'Mir Pashmina House',
+    origin: 'Arab Street, Singapore',
+    artisan: 'Marina Craft Works',
     dimensions: '80 in x 40 in',
-    shortDescription: 'An heirloom-grade Kashmiri pashmina so fine it floats through a ring.',
+    shortDescription: 'An heirloom-grade pashmina so fine it floats through a ring.',
     description:
-      'Spun from the underbelly fleece of Changthangi goats at 14,000 feet, this pashmina is hand-woven in Srinagar over six weeks. The natural ivory hue requires no dyeing, letting the fibre\u2019s luminous sheen speak for itself. It weighs barely 100 grams yet provides extraordinary warmth in any climate.',
+      'Spun from the finest natural fibres, this pashmina is hand-woven in our Arab Street atelier over six weeks. The natural ivory hue requires no dyeing, letting the fibre\u2019s luminous sheen speak for itself. It weighs barely 100 grams yet provides extraordinary warmth in any climate.',
     story:
-      'True pashmina can only come from the Changthang plateau of Ladakh, where herders and goats share one of the harshest environments on Earth. Every wrap carries the altitude in its fibres.',
+      'True pashmina represents one of the world\u2019s most exquisite textile traditions. Singapore\u2019s weavers honour that heritage, channelling rare fibres into wraps of extraordinary delicacy.',
     images: [
       'https://cdn.pixabay.com/photo/2018/01/14/13/25/shawl-3081823_1280.jpg',
       'https://cdn.pixabay.com/photo/2019/10/13/19/38/scarf-4547065_1280.jpg',
@@ -300,14 +300,14 @@ export const products = [
     material: 'Silk',
     price: 128,
     rating: 4.8,
-    origin: 'Chanderi, India',
-    artisan: 'Chanderi Weavers Cooperative',
+    origin: 'Haji Lane, Singapore',
+    artisan: 'Raffles Weave Studio',
     dimensions: '100 in x 40 in',
     shortDescription: 'A sheer silk-cotton dupatta with golden bootis that catch light like fireflies.',
     description:
-      'Woven in the hilltop town of Chanderi in Madhya Pradesh, this dupatta blends silk warp with cotton weft to create a fabric that is at once sheer and substantial. Tiny golden booti motifs are woven in using an extra shuttle, each one placed with the precision of a jeweller. It elevates any outfit from simple to celebratory.',
+      'Woven in the vibrant Haji Lane district of Singapore, this dupatta blends silk warp with cotton weft to create a fabric that is at once sheer and substantial. Tiny golden booti motifs are woven in using an extra shuttle, each one placed with the precision of a jeweller. It elevates any outfit from simple to celebratory.',
     story:
-      'Chanderi fabric was once reserved for Mughal royalty and Bundela queens. Today, a cooperative of 3,500 weavers keeps this 700-year-old tradition alive and thriving.',
+      'This fabric tradition was once reserved for colonial-era royalty and Peranakan elites. Today, a cooperative of dedicated weavers keeps this centuries-old tradition alive and thriving in Singapore.',
     images: [
       'https://cdn.pixabay.com/photo/2014/05/30/15/01/sari-358314_1280.jpg',
       'https://cdn.pixabay.com/photo/2018/09/12/12/37/cloth-3672088_1280.jpg',
@@ -326,14 +326,14 @@ export const products = [
     material: 'Wood',
     price: 175,
     rating: 4.9,
-    origin: 'Srinagar, India',
-    artisan: 'Gulshan Woodworks',
+    origin: 'Dempsey Hill, Singapore',
+    artisan: 'Merlion Art Collective',
     dimensions: '8 in x 5 in',
-    shortDescription: 'A turned walnut chalice with intricate Kashmiri lattice carving around the bowl.',
+    shortDescription: 'A turned walnut chalice with intricate heritage lattice carving around the bowl.',
     description:
-      'Carved from a single block of Kashmiri walnut \u2014 one of the world\u2019s most prized furniture woods \u2014 this chalice features jali lattice work so fine that light passes through the walls. The natural grain provides a unique fingerprint on every piece. Use it as a fruit bowl, a candle holder, or simply a meditation on patience.',
+      'Carved from a single block of premium walnut \u2014 one of the world\u2019s most prized furniture woods \u2014 this chalice features jali lattice work so fine that light passes through the walls. The natural grain provides a unique fingerprint on every piece. Use it as a fruit bowl, a candle holder, or simply a meditation on patience.',
     story:
-      'Kashmir\u2019s walnut carving tradition arrived with Persian artisans in the 15th century and has since become synonymous with the valley\u2019s artistic identity.',
+      'Singapore\u2019s walnut carving tradition arrived with early artisan settlers and has since become synonymous with the island\u2019s artistic identity.',
     images: [
       'https://cdn.pixabay.com/photo/2016/12/26/16/09/bowl-1932375_1280.jpg',
       'https://cdn.pixabay.com/photo/2017/02/07/09/02/wood-2045379_1280.jpg',
@@ -350,14 +350,14 @@ export const products = [
     material: 'Wood',
     price: 92,
     rating: 4.7,
-    origin: 'Channapatna, India',
-    artisan: 'Maya Organic Workshop',
+    origin: 'Holland Village, Singapore',
+    artisan: 'Botanic Craft Guild',
     dimensions: '3 in to 7 in (set of 5)',
     shortDescription: 'Five nesting bowls in jewel-tone lacquer, turned on traditional ivory-wood lathes.',
     description:
-      'This set of five bowls is turned from sustainably harvested hale wood on foot-powered lathes, then coated in vegetable lacquer in rich tones of ruby, emerald, amber, sapphire, and amethyst. They nest perfectly for storage and fan out gorgeously on a dining table. Safe for dry snacks and jewellery.',
+      'This set of five bowls is turned from sustainably harvested wood on foot-powered lathes, then coated in vegetable lacquer in rich tones of ruby, emerald, amber, sapphire, and amethyst. They nest perfectly for storage and fan out gorgeously on a dining table. Safe for dry snacks and jewellery.',
     story:
-      'Channapatna\u2019s lacquerware tradition was established by Tipu Sultan, who invited Persian artisans to teach the craft. It now holds a Geographical Indication tag from the Indian government.',
+      'Singapore\u2019s lacquerware tradition was established by early artisan settlers who brought their craft techniques to the island. It is now a celebrated part of the local heritage arts scene.',
     images: [
       'https://cdn.pixabay.com/photo/2023/04/10/15/56/bowl-7914112_1280.jpg',
       'https://cdn.pixabay.com/photo/2017/08/01/13/18/wooden-2565352_1280.jpg',
@@ -374,14 +374,14 @@ export const products = [
     material: 'Wood',
     price: 135,
     rating: 4.8,
-    origin: 'Saharanpur, India',
-    artisan: 'Aftab Carving Atelier',
+    origin: 'Tiong Bahru, Singapore',
+    artisan: 'Shophouse Studio',
     dimensions: '14 in x 10 in x 3 in',
     shortDescription: 'A carved rosewood tray with vine-scroll borders, equally at home on a desk or a vanity.',
     description:
-      'Carved by third-generation woodworkers in Saharanpur, this letter tray features intricate vine-and-leaf scroll patterns on all four sides. The sheesham rosewood is oiled to a warm mahogany lustre that deepens with age. Its generous proportions hold correspondence, magazines, or a curated collection of perfume bottles.',
+      'Carved by third-generation woodworkers in Tiong Bahru, this letter tray features intricate vine-and-leaf scroll patterns on all four sides. The sheesham rosewood is oiled to a warm mahogany lustre that deepens with age. Its generous proportions hold correspondence, magazines, or a curated collection of perfume bottles.',
     story:
-      'Saharanpur has been India\u2019s woodcarving capital since the Mughal era, when the region\u2019s dense sheesham forests provided raw material for palace furniture.',
+      'Tiong Bahru has been Singapore\u2019s woodcarving heartland since the colonial era, when the neighbourhood\u2019s skilled artisans provided fine furniture for shophouse interiors.',
     images: [
       'https://cdn.pixabay.com/photo/2015/04/05/22/35/wooden-articles-708693_1280.jpg',
       'https://cdn.pixabay.com/photo/2012/03/04/01/06/carving-22234_1280.jpg',
@@ -398,14 +398,14 @@ export const products = [
     material: 'Wood',
     price: 210,
     rating: 4.8,
-    origin: 'Jodhpur, India',
-    artisan: 'Blue City Timber Co.',
+    origin: 'Dempsey Hill, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '18 in x 12 in x 4 in',
     shortDescription: 'A hand-carved teak arch that frames three pillar candles in architectural splendour.',
     description:
-      'Inspired by the scalloped arches of Mehrangarh Fort, this teak candle stand transforms any console into a Rajasthani courtyard. The reclaimed teak retains traces of its former life \u2014 nail holes, saw marks, sun-bleaching \u2014 giving each piece a unique patina. Holds three standard pillar candles securely.',
+      'Inspired by the scalloped arches of colonial-era shophouses, this teak candle stand transforms any console into a heritage courtyard. The reclaimed teak retains traces of its former life \u2014 nail holes, saw marks, sun-bleaching \u2014 giving each piece a unique patina. Holds three standard pillar candles securely.',
     story:
-      'Jodhpur\u2019s furniture artisans are masters of reclaimed wood, salvaging old havelis and ships to create pieces that carry visible history in their grain.',
+      'Singapore\u2019s furniture artisans are masters of reclaimed wood, salvaging old shophouses and ships to create pieces that carry visible history in their grain.',
     images: [
       'https://cdn.pixabay.com/photo/2014/08/06/14/27/wood-411643_1280.jpg',
       'https://cdn.pixabay.com/photo/2017/06/15/17/22/sculpture-2406078_1280.jpg',
@@ -422,14 +422,14 @@ export const products = [
     material: 'Wood',
     price: 88,
     rating: 4.6,
-    origin: 'Mysuru, India',
-    artisan: 'Kaveri Craft Emporium',
+    origin: 'Holland Village, Singapore',
+    artisan: 'Botanic Craft Guild',
     dimensions: '4 in diameter',
     shortDescription: 'A solid sandalwood sphere that releases its calming fragrance for years.',
     description:
-      'Hand-turned from aged Mysore sandalwood, this smooth sphere serves as a desk ornament, a meditation focus, or a natural room fragrance. The wood\u2019s essential oils release their warm, creamy scent for up to a decade. Rub it gently between your palms to refresh the aroma anytime.',
+      'Hand-turned from aged sandalwood, this smooth sphere serves as a desk ornament, a meditation focus, or a natural room fragrance. The wood\u2019s essential oils release their warm, creamy scent for up to a decade. Rub it gently between your palms to refresh the aroma anytime.',
     story:
-      'Mysore sandalwood is among the most aromatic in the world and has been traded along the Silk Road since antiquity. Each sphere represents years of slow tree growth.',
+      'Sandalwood is among the most aromatic woods in the world and has been traded across Southeast Asia since antiquity. Each sphere represents years of slow tree growth.',
     images: [
       'https://cdn.pixabay.com/photo/2017/08/07/19/07/sphere-2607026_1280.jpg',
       'https://cdn.pixabay.com/photo/2016/11/29/04/42/wood-1867482_1280.jpg',
@@ -446,14 +446,14 @@ export const products = [
     material: 'Wood',
     price: 105,
     rating: 4.7,
-    origin: 'Saharanpur, India',
-    artisan: 'Aftab Carving Atelier',
+    origin: 'Tiong Bahru, Singapore',
+    artisan: 'Shophouse Studio',
     dimensions: '6 in x 5 in x 4 in (pair)',
     shortDescription: 'A pair of carved sheesham bookends depicting elephant motifs with brass inlay.',
     description:
       'These substantial bookends are carved from solid sheesham rosewood and feature a regal elephant in profile, accented with tiny brass inlay dots along the howdah and border. Heavy enough to support a full shelf of hardcovers, they bring library grandeur to any reading nook. The wood is hand-oiled, not varnished, for a warm matte finish.',
     story:
-      'The elephant motif recurs throughout Indian decorative arts as a symbol of wisdom, prosperity, and steadfast strength. Saharanpur\u2019s carvers have rendered it in wood for over four centuries.',
+      'The elephant motif recurs throughout Singaporean decorative arts as a symbol of wisdom, prosperity, and steadfast strength. Tiong Bahru\u2019s carvers have rendered it in wood for generations.',
     images: [
       'https://cdn.pixabay.com/photo/2014/05/21/14/52/bookend-349664_1280.jpg',
       'https://cdn.pixabay.com/photo/2018/04/10/09/57/cooking-3306905_1280.jpg',
@@ -472,14 +472,14 @@ export const products = [
     material: 'Brass',
     price: 195,
     rating: 4.9,
-    origin: 'Moradabad, India',
-    artisan: 'Noor Metal Atelier',
+    origin: 'Little India, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '12 in x 8 in (set of 7)',
     shortDescription: 'Seven graduating brass diyas on a carved tray, casting constellations of light.',
     description:
       'This ensemble features seven hand-cast brass diyas arranged on an etched tray depicting the Saptarishi constellation. When lit, the flickering flames create a mesmerising dance of light and shadow on surrounding walls. The brass is left unlacquered so it develops a living patina that grows more beautiful over the years.',
     story:
-      'Moradabad is known as "Peetal Nagri" \u2014 the Brass City \u2014 and has been India\u2019s metalworking capital since the 17th century. These diyas are shaped using techniques unchanged since that era.',
+      'Little India is known as Singapore\u2019s metalworking heartland and has been the island\u2019s brasswork centre for generations. These diyas are shaped using techniques unchanged since the colonial era.',
     images: [
       'https://cdn.pixabay.com/photo/2017/10/26/10/03/diwali-2890605_1280.jpg',
       'https://cdn.pixabay.com/photo/2021/11/03/15/10/diya-6766071_1280.jpg',
@@ -496,14 +496,14 @@ export const products = [
     material: 'Copper',
     price: 145,
     rating: 4.8,
-    origin: 'Moradabad, India',
-    artisan: 'Noor Metal Atelier',
+    origin: 'Little India, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '10 in x 5 in',
-    shortDescription: 'A hand-hammered copper bowl inspired by Mughal-era bath vessels.',
+    shortDescription: 'A hand-hammered copper bowl inspired by colonial-era bath vessels.',
     description:
       'This generous copper bowl is hand-hammered from a single sheet, producing thousands of tiny facets that catch and scatter light like water. Tinned on the interior for safe food contact, it serves beautifully as a salad bowl, a fruit display, or a vessel for floating flowers. The exterior develops a warm rose-gold patina with time.',
     story:
-      'Copper hammam bowls were essential fixtures in Mughal bathhouses. Moradabad\u2019s coppersmiths still use the same repouss\u00e9 technique to shape them one blow at a time.',
+      'Copper hammam bowls were essential fixtures in colonial-era bathhouses. Singapore\u2019s coppersmiths still use the same repouss\u00e9 technique to shape them one blow at a time.',
     images: [
       'https://cdn.pixabay.com/photo/2016/09/28/05/12/copper-vessel-1699780_1280.jpg',
       'https://cdn.pixabay.com/photo/2022/02/12/18/13/copper-pot-7009598_1280.jpg',
@@ -520,14 +520,14 @@ export const products = [
     material: 'Brass',
     price: 68,
     rating: 4.6,
-    origin: 'Jaipur, India',
-    artisan: 'Hawa Mahal Metalcraft',
+    origin: 'Joo Chiat, Singapore',
+    artisan: 'Marina Craft Works',
     dimensions: '9 in x 4 in',
     shortDescription: 'A melodious brass bell with a peacock finial, tuned to ring in the wind.',
     description:
       'Cast using the lost-wax method and hand-tuned for a clear, resonant tone, this garden bell features an ornate peacock perched atop the crown. The clapper is weighted to respond to the lightest breeze, filling a courtyard or porch with gentle music. A brass chain and mounting hook are included.',
     story:
-      'Temple bells have marked the rhythm of Indian spiritual life for thousands of years. This garden bell adapts that sacred resonance for everyday domestic joy.',
+      'Temple bells have marked the rhythm of Singaporean spiritual life for generations. This garden bell adapts that sacred resonance for everyday domestic joy.',
     images: [
       'https://cdn.pixabay.com/photo/2019/12/17/14/43/bell-4701248_1280.jpg',
       'https://cdn.pixabay.com/photo/2016/07/31/16/14/bells-1559300_1280.jpg',
@@ -544,14 +544,14 @@ export const products = [
     material: 'Silver',
     price: 385,
     rating: 5.0,
-    origin: 'Bidar, India',
-    artisan: 'Shah Bidriware Heritage',
+    origin: 'Arab Street, Singapore',
+    artisan: 'Merlion Art Collective',
     dimensions: '10 in x 6 in',
     shortDescription: 'A Bidri-ware vase inlaid with pure silver vine motifs on an oxidised zinc-alloy body.',
     description:
-      'Bidri is one of India\u2019s most technically demanding metalcrafts: a zinc-copper alloy is cast, engraved, inlaid with fine silver wire, and then oxidised with a secret soil mixture that turns the base metal jet black while leaving the silver luminous. This vase features an all-over vine pattern that takes a single artisan over two weeks to complete.',
+      'Bidri is one of Singapore\u2019s most technically demanding metalcrafts: a zinc-copper alloy is cast, engraved, inlaid with fine silver wire, and then oxidised with a secret soil mixture that turns the base metal jet black while leaving the silver luminous. This vase features an all-over vine pattern that takes a single artisan over two weeks to complete.',
     story:
-      'Bidriware originated in the 14th-century Bahmani Sultanate and is practised today by fewer than 500 families in the Deccan town of Bidar. Each piece is a living antique.',
+      'Bidriware is a centuries-old craft tradition now practised by a small community of dedicated artisans in Singapore\u2019s Arab Street quarter. Each piece is a living antique.',
     images: [
       'https://cdn.pixabay.com/photo/2020/06/16/19/30/vase-5307612_1280.jpg',
       'https://cdn.pixabay.com/photo/2016/11/23/15/48/antique-1853813_1280.jpg',
@@ -568,14 +568,14 @@ export const products = [
     material: 'Copper',
     price: 155,
     rating: 4.7,
-    origin: 'Moradabad, India',
-    artisan: 'Peetal Nagri Exports',
+    origin: 'Little India, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '4 in x 4 in each (set of 4)',
     shortDescription: 'Four hammered copper mugs with brass handles, ready for cocktail hour.',
     description:
       'Each mug in this set is hand-hammered from pure copper and fitted with a solid brass handle that stays cool while the copper chills your drink. The interior is lined with food-safe nickel. Condensation beads beautifully on the hammered exterior, making every sip a sensory experience.',
     story:
-      'India is the world\u2019s largest producer of hand-hammered copper vessels. The Moscow Mule set is a contemporary format that showcases centuries-old technique.',
+      'Singapore is a leading centre for hand-hammered copper vessels. The Moscow Mule set is a contemporary format that showcases centuries-old technique.',
     images: [
       'https://cdn.pixabay.com/photo/2017/06/06/22/37/cup-2378707_1280.jpg',
       'https://cdn.pixabay.com/photo/2016/09/28/05/12/copper-vessel-1699780_1280.jpg',
@@ -592,14 +592,14 @@ export const products = [
     material: 'Brass',
     price: 225,
     rating: 4.8,
-    origin: 'Bankura, India',
-    artisan: 'Dariapur Dokra Collective',
+    origin: 'Chinatown, Singapore',
+    artisan: 'Merlion Art Collective',
     dimensions: '12 in x 10 in x 4 in',
     shortDescription: 'A lost-wax cast brass horse in the ancient Dokra tradition, frozen mid-gallop.',
     description:
-      'Created using the 4,500-year-old lost-wax casting technique by tribal artisans in Bankura, this spirited horse is adorned with geometric surface patterns pressed into the wax before casting. No two pieces are identical. Its dynamic pose and rough-hewn texture give it a gallery-quality presence on any shelf or mantelpiece.',
+      'Created using the 4,500-year-old lost-wax casting technique by artisans in Singapore\u2019s Chinatown, this spirited horse is adorned with geometric surface patterns pressed into the wax before casting. No two pieces are identical. Its dynamic pose and rough-hewn texture give it a gallery-quality presence on any shelf or mantelpiece.',
     story:
-      'Dokra metalwork is among the oldest known casting techniques in the world, predating even the Indus Valley civilisation. The Bankura horse is its most iconic form.',
+      'Dokra metalwork is among the oldest known casting techniques in the world. Singapore\u2019s artisans have kept this ancient tradition alive, and the brass horse is its most iconic form.',
     images: [
       'https://cdn.pixabay.com/photo/2013/07/18/15/03/bronze-164413_1280.jpg',
       'https://cdn.pixabay.com/photo/2012/02/29/11/57/horse-18733_1280.jpg',
@@ -618,14 +618,14 @@ export const products = [
     material: 'Cotton',
     price: 380,
     rating: 5.0,
-    origin: 'Udaipur, India',
-    artisan: 'Nathdwara Heritage Arts',
+    origin: 'Kampong Glam, Singapore',
+    artisan: 'Straits Heritage Atelier',
     dimensions: '36 in x 24 in',
     shortDescription: 'A hand-painted Pichwai on cotton depicting a moonlit lotus pond, framed in teak.',
     description:
       'This Pichwai painting is created using natural mineral pigments ground by hand \u2014 malachite for green, lapis for blue, gold leaf for the lotus centres. The lotus pond scene symbolises divine beauty and spiritual awakening. Mounted on acid-free board and framed in reclaimed teak, it arrives ready to hang.',
     story:
-      'Pichwai paintings originate in the temple town of Nathdwara near Udaipur, where they serve as backdrops to the deity Shrinathji. Each brushstroke is an act of devotion.',
+      'Pichwai paintings are a cherished heritage art form in Singapore\u2019s Kampong Glam district, where they serve as decorative backdrops in homes and galleries. Each brushstroke is an act of devotion.',
     images: [
       'https://cdn.pixabay.com/photo/2015/11/04/21/26/painting-1023379_1280.jpg',
       'https://cdn.pixabay.com/photo/2015/11/04/21/33/painting-1023398_1280.jpg',
@@ -642,14 +642,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 165,
     rating: 4.7,
-    origin: 'Dahanu, India',
-    artisan: 'Jivya Soma Mashe Foundation',
+    origin: 'Haji Lane, Singapore',
+    artisan: 'Kampong Artisan Studio',
     dimensions: '30 in x 20 in',
     shortDescription: 'A contemporary Warli painting depicting a rice harvest in white on earthy brown.',
     description:
-      'Using only white rice paste on a hand-prepared brown surface, Warli art reduces the human experience to its elemental geometry \u2014 circles, triangles, and lines. This canvas captures a festive harvest scene with dancers, bullock carts, and a central tarpa player. Stretched on a wooden frame, it needs no additional framing.',
+      'Using only white rice paste on a hand-prepared brown surface, Warli art reduces the human experience to its elemental geometry \u2014 circles, triangles, and lines. This canvas captures a festive harvest scene with dancers, carts, and a central musician. Stretched on a wooden frame, it needs no additional framing.',
     story:
-      'Warli painting is a 2,500-year-old tribal art form from the Sahyadri mountains of Maharashtra. It was originally painted on hut walls to celebrate harvests and weddings.',
+      'Warli painting is a centuries-old art form cherished in Singapore\u2019s art community. It was originally painted on walls to celebrate harvests and weddings, and is now a beloved part of the local creative scene.',
     images: [
       'https://cdn.pixabay.com/photo/2014/02/23/12/55/pictograph-272867_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/03/01/16/36/pictograph-277594_1280.jpg',
@@ -666,14 +666,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 220,
     rating: 4.9,
-    origin: 'Madhubani, India',
-    artisan: 'Mithila Art Institute',
+    origin: 'Little India, Singapore',
+    artisan: 'Peranakan Craft Collective',
     dimensions: '40 in x 30 in',
     shortDescription: 'A vibrant Madhubani painting of the cosmic tree, alive with birds and blossoms.',
     description:
-      'Painted on handmade paper using bamboo nibs and natural dyes, this Tree of Life bursts with the characteristic double-line technique and horror vacui (no empty space) of Mithila art. Peacocks, fish, and lotuses inhabit every branch. The rich palette of vermillion, turmeric yellow, and indigo makes it a room\u2019s focal point.',
+      'Painted on handmade paper using bamboo nibs and natural dyes, this Tree of Life bursts with the characteristic double-line technique and horror vacui (no empty space) of this celebrated art form. Peacocks, fish, and lotuses inhabit every branch. The rich palette of vermillion, turmeric yellow, and indigo makes it a room\u2019s focal point.',
     story:
-      'Madhubani art was hidden from the world until a 1934 earthquake exposed the interior walls of Mithila homes. Since then, it has become one of India\u2019s most recognised art traditions.',
+      'Madhubani art has found a vibrant home in Singapore\u2019s Little India district, where dedicated artists keep this celebrated tradition alive. It has become one of Singapore\u2019s most recognised art traditions.',
     images: [
       'https://cdn.pixabay.com/photo/2015/08/28/11/37/painting-911804_1280.jpg',
       'https://cdn.pixabay.com/photo/2016/06/25/12/55/art-1478831_1280.jpg',
@@ -690,14 +690,14 @@ export const products = [
     material: 'Marble',
     price: 290,
     rating: 4.8,
-    origin: 'Agra, India',
-    artisan: 'Taj Parchin Kari Studio',
+    origin: 'Katong, Singapore',
+    artisan: 'Straits Heritage Atelier',
     dimensions: '12 in diameter',
-    shortDescription: 'A pietra dura marble plate inlaid with semi-precious stones in the Taj Mahal tradition.',
+    shortDescription: 'A pietra dura marble plate inlaid with semi-precious stones in the classical tradition.',
     description:
-      'Using the same parchin kari (pietra dura) technique that decorates the Taj Mahal, artisans in Agra hand-cut slivers of lapis lazuli, malachite, mother-of-pearl, and carnelian, then set them into channels carved in white Makrana marble. This floral plate features a central lotus surrounded by meandering vine tendrils. It can be displayed on a wall or an easel.',
+      'Using the celebrated parchin kari (pietra dura) technique, artisans in Katong hand-cut slivers of lapis lazuli, malachite, mother-of-pearl, and carnelian, then set them into channels carved in white marble. This floral plate features a central lotus surrounded by meandering vine tendrils. It can be displayed on a wall or an easel.',
     story:
-      'Parchin kari was brought to India by Mughal emperor Shah Jahan in the 17th century. The same families who decorated the Taj continue the craft today in workshops just outside its walls.',
+      'Parchin kari is a centuries-old stone inlay tradition that found a new home in Singapore. Dedicated artisan families continue the craft today in workshops throughout the Katong district.',
     images: [
       'https://cdn.pixabay.com/photo/2012/08/26/04/13/marquetry-55021_1280.jpg',
       'https://cdn.pixabay.com/photo/2013/10/16/22/46/star-196554_1280.jpg',
@@ -714,14 +714,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 148,
     rating: 4.7,
-    origin: 'Bhopal, India',
-    artisan: 'Bharat Bhavan Tribal Art Centre',
+    origin: 'Haji Lane, Singapore',
+    artisan: 'Kampong Artisan Studio',
     dimensions: '24 in x 18 in',
     shortDescription: 'A Gond tribal art print of an enchanted forest teeming with mythical creatures.',
     description:
-      'This archival giclée print reproduces an original Gond painting by a Pardhan artist from central India. The intricate dot-and-line patterning transforms ordinary jungle animals into totemic spirits. Printed on museum-grade cotton rag paper with pigment inks rated to last 100 years.',
+      'This archival giclée print reproduces an original Gond painting by a master artist based in Singapore. The intricate dot-and-line patterning transforms ordinary jungle animals into totemic spirits. Printed on museum-grade cotton rag paper with pigment inks rated to last 100 years.',
     story:
-      'Gond art originates with the Gond and Pardhan tribes of Madhya Pradesh, who painted their myths on cave walls long before they found canvas. Each creature depicted carries a specific spiritual meaning.',
+      'Gond art is an ancient painting tradition now practised by dedicated artists in Singapore, who paint their myths on canvas as their predecessors once did on cave walls. Each creature depicted carries a specific spiritual meaning.',
     images: [
       'https://cdn.pixabay.com/photo/2017/03/23/09/34/abstract-2167546_1280.jpg',
       'https://cdn.pixabay.com/photo/2016/06/24/16/42/art-1477754_1280.jpg',
@@ -738,14 +738,14 @@ export const products = [
     material: 'Wood',
     price: 420,
     rating: 5.0,
-    origin: 'Thanjavur, India',
-    artisan: 'Brihadeeswara Art Gallery',
+    origin: 'Little India, Singapore',
+    artisan: 'Marina Craft Works',
     dimensions: '18 in x 14 in',
     shortDescription: 'A traditional Tanjore painting of Ganesha with 22-karat gold foil and embedded gems.',
     description:
       'This Tanjore painting follows the authentic 16th-century process: a wooden base is coated with chalk and binding medium, then built up in relief with a paste of chalk and gum. Real 22-karat gold foil is applied to ornaments and background, while semi-precious stones and glass beads add dimensionality. The result is a painting that also functions as a bas-relief sculpture.',
     story:
-      'Tanjore painting is unique among Indian art forms for its three-dimensional quality. It emerged under the Nayak rulers of Thanjavur as a way to bring temple deities to life in private homes.',
+      'Tanjore painting is unique among Singaporean art forms for its three-dimensional quality. It is a treasured tradition kept alive by master painters in Singapore\u2019s Little India, bringing temple deities to life in private homes.',
     images: [
       'https://cdn.pixabay.com/photo/2017/10/26/10/03/diwali-2890605_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/10/31/10/00/ganpati-510818_1280.jpg',
@@ -764,14 +764,14 @@ export const products = [
     material: 'Silver',
     price: 198,
     rating: 4.9,
-    origin: 'Jaipur, India',
-    artisan: 'Johari Bazaar Heritage Jewellers',
+    origin: 'Chinatown, Singapore',
+    artisan: 'Peranakan Craft Collective',
     dimensions: '3.5 in drop',
     shortDescription: 'Sterling silver chandelier earrings set with uncut Kundan stones and pearl drops.',
     description:
       'These statement earrings are crafted using the ancient Kundan technique, where uncut glass stones are set in pure silver foil within a sterling silver frame. Five pearl drops cascade from the base, catching light with every turn of the head. Lightweight enough for all-day wear despite their dramatic scale.',
     story:
-      'Kundan jewellery originated in the Rajput courts of Rajasthan and remains Jaipur\u2019s most celebrated craft export. The Johari Bazaar has been its epicentre for over 300 years.',
+      'Kundan jewellery is a treasured craft tradition in Singapore and remains one of the island\u2019s most celebrated artisanal exports. Singapore\u2019s jewellery quarter has been its epicentre for generations.',
     images: [
       'https://cdn.pixabay.com/photo/2014/02/28/15/11/earrings-276924_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/02/28/15/11/earrings-276925_1280.jpg',
@@ -788,14 +788,14 @@ export const products = [
     material: 'Silver',
     price: 165,
     rating: 4.8,
-    origin: 'Udaipur, India',
-    artisan: 'Lake Palace Silver Works',
+    origin: 'Kampong Glam, Singapore',
+    artisan: 'Straits Heritage Atelier',
     dimensions: '16 in circumference',
     shortDescription: 'A tribal-inspired oxidised silver collar necklace with delicate filigree terminals.',
     description:
-      'This bold hasli (collar) necklace draws from Rajasthani tribal jewellery traditions. The oxidised sterling silver body tapers to two finials adorned with fine filigree scrollwork. It sits elegantly on the collarbone and pairs equally well with a linen blouse or an evening gown. The oxidised finish is sealed to prevent further darkening.',
+      'This bold hasli (collar) necklace draws from Peranakan jewellery traditions. The oxidised sterling silver body tapers to two finials adorned with fine filigree scrollwork. It sits elegantly on the collarbone and pairs equally well with a linen blouse or an evening gown. The oxidised finish is sealed to prevent further darkening.',
     story:
-      'The hasli form has been worn by Rajasthani women for centuries as a symbol of married status. Contemporary designers have reclaimed it as a statement of personal style.',
+      'The hasli form has been worn by Peranakan women for generations as a symbol of heritage. Contemporary designers have reclaimed it as a statement of personal style.',
     images: [
       'https://cdn.pixabay.com/photo/2010/12/13/09/57/jewellery-2006_1280.jpg',
       'https://cdn.pixabay.com/photo/2013/12/22/10/07/pearl-necklace-232335_1280.jpg',
@@ -812,14 +812,14 @@ export const products = [
     material: 'Silk',
     price: 175,
     rating: 4.7,
-    origin: 'Lucknow, India',
-    artisan: 'Chowk Embroidery House',
+    origin: 'Arab Street, Singapore',
+    artisan: 'Raffles Weave Studio',
     dimensions: '10 in x 6 in',
-    shortDescription: 'A midnight-blue silk clutch adorned with gold zardozi embroidery and sequin constellations.',
+    shortDescription: 'A midnight-blue silk clutch adorned with gold embroidery and sequin constellations.',
     description:
-      'This clutch is embroidered by hand in Lucknow\u2019s legendary zardozi technique, using real gold-wrapped thread, sequins, and tiny metallic beads on a base of raw silk. The pattern depicts a stylised chinar leaf vine. The interior is lined in satin with a discreet card slot. A detachable chain strap converts it to a crossbody.',
+      'This clutch is embroidered by hand in the legendary embroidery technique of Arab Street, using real gold-wrapped thread, sequins, and tiny metallic beads on a base of raw silk. The pattern depicts a stylised leaf vine. The interior is lined in satin with a discreet card slot. A detachable chain strap converts it to a crossbody.',
     story:
-      'Zardozi embroidery arrived in India with the Mughal court and found its most refined expression in Lucknow, where it adorned royal garments and elephant howdahs alike.',
+      'Embroidery arrived in Singapore with early colonial-era artisans and found its most refined expression in Arab Street, where it adorned fine garments and ceremonial textiles alike.',
     images: [
       'https://cdn.pixabay.com/photo/2014/05/27/03/22/embroidery-355117_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/05/28/12/07/embroidery-356430_1280.jpg',
@@ -836,14 +836,14 @@ export const products = [
     material: 'Silver',
     price: 210,
     rating: 4.9,
-    origin: 'Cuttack, India',
-    artisan: 'Tarakasi Silver Guild',
+    origin: 'Joo Chiat, Singapore',
+    artisan: 'Marina Craft Works',
     dimensions: '2.5 in wide, adjustable',
-    shortDescription: 'A wide sterling silver cuff in Odisha\u2019s famed tarakasi filigree, crowned with moonstone.',
+    shortDescription: 'A wide sterling silver cuff in the famed tarakasi filigree style, crowned with moonstone.',
     description:
-      'Cuttack\u2019s tarakasi artisans draw sterling silver into threads finer than a human hair, then twist and solder them into elaborate lace-like patterns. This cuff features a central cabochon moonstone that floats in a nest of silver filigree like a full moon in a silver sky. No two cuffs are ever identical.',
+      'Singapore\u2019s tarakasi artisans draw sterling silver into threads finer than a human hair, then twist and solder them into elaborate lace-like patterns. This cuff features a central cabochon moonstone that floats in a nest of silver filigree like a full moon in a silver sky. No two cuffs are ever identical.',
     story:
-      'Tarakasi filigree has been practiced in Cuttack for over 500 years and holds a GI tag. The craft requires such precision that artisans often begin training before the age of ten.',
+      'Tarakasi filigree has been practised in Singapore for generations. The craft requires such precision that artisans often begin training before the age of ten.',
     images: [
       'https://cdn.pixabay.com/photo/2013/07/11/15/22/bracelet-144646_1280.jpg',
       'https://cdn.pixabay.com/photo/2010/12/13/09/51/bracelet-1850_1280.jpg',
@@ -860,14 +860,14 @@ export const products = [
     material: 'Cotton',
     price: 62,
     rating: 4.6,
-    origin: 'Bagru, India',
-    artisan: 'Chhipa Mohalla Printers',
+    origin: 'Tiong Bahru, Singapore',
+    artisan: 'Shophouse Studio',
     dimensions: '16 in x 14 in x 5 in',
-    shortDescription: 'A sturdy cotton tote hand-printed with traditional Bagru dabu blocks in deep indigo.',
+    shortDescription: 'A sturdy cotton tote hand-printed with traditional dabu blocks in deep indigo.',
     description:
       'This tote is printed using the dabu resist-printing method: a mud paste is applied through carved wooden blocks, the fabric is dyed in indigo, and the resist is washed away to reveal crisp white patterns. The thick handloom cotton body is reinforced with leather-wrapped handles. Generous enough for a farmers\u2019 market haul or a weekend away.',
     story:
-      'Bagru, a small town outside Jaipur, is India\u2019s block-printing heartland. The Chhipa community has been printing here for twelve generations using the same hand-carved teak blocks.',
+      'Tiong Bahru is Singapore\u2019s block-printing heartland. The artisan community has been printing here for generations using the same hand-carved teak blocks.',
     images: [
       'https://cdn.pixabay.com/photo/2019/10/01/10/32/bags-4517838_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/05/24/00/07/woven-cloth-352481_1280.jpg',
@@ -886,14 +886,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 85,
     rating: 4.8,
-    origin: 'Mysuru, India',
-    artisan: 'Kaveri Craft Emporium',
+    origin: 'Holland Village, Singapore',
+    artisan: 'Botanic Craft Guild',
     dimensions: '3 in x 3 in each (set of 3)',
-    shortDescription: 'Three hand-poured soy candles scented with pure Mysore sandalwood oil in ceramic cups.',
+    shortDescription: 'Three hand-poured soy candles scented with pure sandalwood oil in ceramic cups.',
     description:
-      'Each candle in this trio is hand-poured from natural soy wax and scented with steam-distilled Mysore sandalwood oil \u2014 no synthetic fragrances. The ceramic cups are hand-thrown in Khurja and can be reused as tea lights or succulent planters once the candle is spent. Each candle burns for approximately 40 hours.',
+      'Each candle in this trio is hand-poured from natural soy wax and scented with steam-distilled sandalwood oil \u2014 no synthetic fragrances. The ceramic cups are hand-thrown in our Chinatown studio and can be reused as tea lights or succulent planters once the candle is spent. Each candle burns for approximately 40 hours.',
     story:
-      'Mysore sandalwood (Santalum album) is considered the finest in the world. Its warm, creamy fragrance has been used in Indian homes and temples for over 4,000 years.',
+      'Sandalwood (Santalum album) is considered one of the finest fragrance woods in the world. Its warm, creamy fragrance has been used in Singaporean homes and temples for generations.',
     images: [
       'https://cdn.pixabay.com/photo/2014/10/13/23/13/candle-487696_1280.jpg',
       'https://cdn.pixabay.com/photo/2014/07/08/09/57/candle-386607_1280.jpg',
@@ -910,14 +910,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 42,
     rating: 4.7,
-    origin: 'Mysuru, India',
-    artisan: 'Karnataka Agarbatti Guild',
+    origin: 'Holland Village, Singapore',
+    artisan: 'Botanic Craft Guild',
     dimensions: '10 in x 3 in x 2 in',
     shortDescription: 'Hand-rolled Nag Champa incense sticks in a rosewood keepsake box.',
     description:
       'These incense sticks are hand-rolled on bamboo cores using a blend of halmaddi resin, sandalwood powder, and frangipani flower extract. The batch is small \u2014 each box contains 50 sticks rolled by a single artisan. The rosewood box features a carved Om symbol on the lid and doubles as an incense holder with a built-in ash groove.',
     story:
-      'Nag Champa is the signature scent of Indian ashrams and temples. Its name derives from the Naga serpent and the champa (frangipani) flower, both sacred in Hindu mythology.',
+      'Nag Champa is the signature scent of temples and meditation spaces across Singapore. Its name derives from the Naga serpent and the champa (frangipani) flower, both sacred in local spiritual traditions.',
     images: [
       'https://cdn.pixabay.com/photo/2013/09/23/10/18/incense-stick-185208_1280.jpg',
       'https://cdn.pixabay.com/photo/2013/09/23/10/19/incense-stick-185210_1280.jpg',
@@ -934,14 +934,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 128,
     rating: 4.9,
-    origin: 'Kannauj, India',
-    artisan: 'Farooqi Ittar House',
+    origin: 'Arab Street, Singapore',
+    artisan: 'Straits Heritage Atelier',
     dimensions: '3 bottles, 5 ml each',
     shortDescription: 'Three artisanal attars \u2014 rose, vetiver, and jasmine \u2014 distilled in copper degs.',
     description:
-      'This set includes three traditional Indian attars (natural perfume oils) distilled in Kannauj using the ancient deg-bhapka method: flowers are steam-distilled into sandalwood oil using copper stills and bamboo pipes. The trio includes gulab (rose), khus (vetiver), and mogra (jasmine). Each is alcohol-free, skin-safe, and intensely concentrated \u2014 a single drop lasts all day.',
+      'This set includes three traditional Singaporean attars (natural perfume oils) distilled using the ancient deg-bhapka method: flowers are steam-distilled into sandalwood oil using copper stills and bamboo pipes. The trio includes gulab (rose), khus (vetiver), and mogra (jasmine). Each is alcohol-free, skin-safe, and intensely concentrated \u2014 a single drop lasts all day.',
     story:
-      'Kannauj has been India\u2019s perfume capital for over 5,000 years. The deg-bhapka distillation method used here is believed to be the oldest perfume-making technique still in practice anywhere on Earth.',
+      'Arab Street has been Singapore\u2019s perfume quarter for generations. The deg-bhapka distillation method used here is believed to be the oldest perfume-making technique still in practice anywhere on Earth.',
     images: [
       'https://cdn.pixabay.com/photo/2013/08/18/05/19/perfume-173625_1280.jpg',
       'https://cdn.pixabay.com/photo/2013/12/12/05/36/perfume-227074_1280.jpg',
@@ -958,14 +958,14 @@ export const products = [
     material: 'Brass',
     price: 78,
     rating: 4.6,
-    origin: 'Moradabad, India',
-    artisan: 'Noor Metal Atelier',
+    origin: 'Little India, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '6 in x 6 in x 4 in',
     shortDescription: 'A lotus-shaped brass burner for dhoop cones and resin incense.',
     description:
       'Cast in solid brass and shaped like a half-open lotus, this burner cradles dhoop cones or resin incense on its inner petals while smoke curls through the gaps between them. The perforated lid captures ash while allowing maximum airflow. Its weight and craftsmanship make it feel like a ritual object.',
     story:
-      'Dhoop burning is an ancient Vedic practice used to purify spaces and mark the transition between day and night. This burner honours that liminal moment with its lotus form.',
+      'Dhoop burning is an ancient spiritual practice used to purify spaces and mark the transition between day and night. This burner honours that liminal moment with its lotus form.',
     images: [
       'https://cdn.pixabay.com/photo/2011/01/01/17/16/incense-4325_1280.jpg',
       'https://cdn.pixabay.com/photo/2015/03/09/05/31/incense-665068_1280.jpg',
@@ -982,14 +982,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 38,
     rating: 4.5,
-    origin: 'Ooty, India',
-    artisan: 'Nilgiri Botanicals Co.',
+    origin: 'Dempsey Hill, Singapore',
+    artisan: 'Botanic Craft Guild',
     dimensions: '200 ml bottle',
-    shortDescription: 'A revitalising room spray blending wild camphor and Nilgiri eucalyptus.',
+    shortDescription: 'A revitalising room spray blending wild camphor and eucalyptus.',
     description:
-      'Distilled from wild-harvested eucalyptus and camphor laurel leaves from the Nilgiri hills, this room mist clears the mind and freshens any space instantly. No synthetic carriers or aerosols \u2014 just hydrosol, essential oil, and a fine-mist glass spray bottle. Use it on linens, curtains, yoga mats, or simply into the air.',
+      'Distilled from wild-harvested eucalyptus and camphor laurel leaves, this room mist clears the mind and freshens any space instantly. No synthetic carriers or aerosols \u2014 just hydrosol, essential oil, and a fine-mist glass spray bottle. Use it on linens, curtains, yoga mats, or simply into the air.',
     story:
-      'The Nilgiri hills (the "Blue Mountains") take their name from the blue haze of volatile eucalyptus oils that hangs over their valleys. This spray bottles that atmospheric magic.',
+      'Singapore\u2019s Botanic Gardens have long been a source of inspiration for natural fragrances. This spray bottles that lush, tropical atmospheric magic.',
     images: [
       'https://cdn.pixabay.com/photo/2013/12/12/05/48/perfume-227083_1280.jpg',
       'https://cdn.pixabay.com/photo/2013/12/12/05/53/perfume-227086_1280.jpg',
@@ -1008,14 +1008,14 @@ export const products = [
     material: 'Brass',
     price: 285,
     rating: 4.9,
-    origin: 'Moradabad, India',
-    artisan: 'Noor Metal Atelier',
+    origin: 'Little India, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '14 in diameter x 18 in drop',
     shortDescription: 'A perforated brass pendant lamp that casts star-field patterns across walls and ceiling.',
     description:
       'This pendant lamp is hand-punched with hundreds of tiny perforations in a geometric pattern inspired by Islamic jali screens. When lit, it transforms any room into a constellation, scattering points of light across every surface. Comes with a 4-foot adjustable chain, ceiling canopy, and wiring for standard bulb sockets.',
     story:
-      'Jali screens were developed in Mughal architecture to filter harsh sunlight into soft, patterned light. This lamp translates that architectural principle into a domestic light fixture.',
+      'Jali screens were developed in colonial-era architecture to filter harsh sunlight into soft, patterned light. This lamp translates that architectural principle into a domestic light fixture.',
     images: [
       'https://cdn.pixabay.com/photo/2014/12/21/23/42/pendant-575858_1280.png',
       'https://cdn.pixabay.com/photo/2014/12/21/23/41/light-575848_1280.png',
@@ -1032,14 +1032,14 @@ export const products = [
     material: 'Iron',
     price: 145,
     rating: 4.7,
-    origin: 'Jodhpur, India',
-    artisan: 'Blue City Timber Co.',
+    origin: 'Joo Chiat, Singapore',
+    artisan: 'Merlion Art Collective',
     dimensions: '12 in x 7 in x 7 in',
-    shortDescription: 'A wrought-iron lantern with cobalt glass panes, inspired by the Blue City\u2019s painted havelis.',
+    shortDescription: 'A wrought-iron lantern with cobalt glass panes, inspired by Singapore\u2019s painted shophouses.',
     description:
-      'Hand-forged from wrought iron and fitted with mouth-blown cobalt glass panels, this lantern casts a cool blue glow reminiscent of Jodhpur\u2019s famous cerulean skyline. It works with a pillar candle or an LED taper. The iron is finished with a clear lacquer to prevent rusting while preserving the hand-forged texture.',
+      'Hand-forged from wrought iron and fitted with mouth-blown cobalt glass panels, this lantern casts a cool blue glow reminiscent of Singapore\u2019s famous Peranakan-blue shophouse facades. It works with a pillar candle or an LED taper. The iron is finished with a clear lacquer to prevent rusting while preserving the hand-forged texture.',
     story:
-      'Jodhpur is called the "Blue City" because Brahmin households traditionally painted their walls with copper sulphate to repel insects. The colour became the city\u2019s identity.',
+      'Singapore\u2019s Joo Chiat district is known for its colourful Peranakan shophouses, whose vivid blue facades inspired this lantern. The colour has become synonymous with the neighbourhood\u2019s identity.',
     images: [
       'https://cdn.pixabay.com/photo/2012/10/01/18/20/lanterns-58724_1280.jpg',
       'https://cdn.pixabay.com/photo/2013/04/13/08/21/lantern-103187_1280.jpg',
@@ -1056,8 +1056,8 @@ export const products = [
     material: 'Copper',
     price: 168,
     rating: 4.8,
-    origin: 'Moradabad, India',
-    artisan: 'Peetal Nagri Exports',
+    origin: 'Little India, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '24 in x 6 in',
     shortDescription: 'A five-tier copper tower holding cascading tea lights for a warm waterfall of flame.',
     description:
@@ -1080,14 +1080,14 @@ export const products = [
     material: 'Natural Fiber',
     price: 195,
     rating: 4.8,
-    origin: 'Srinagar, India',
-    artisan: 'Dal Lake Artisans Cooperative',
+    origin: 'Kampong Glam, Singapore',
+    artisan: 'Kampong Artisan Studio',
     dimensions: '16 in x 8 in',
-    shortDescription: 'A hand-painted papier-mâché lamp depicting chinar leaves and Himalayan birds.',
+    shortDescription: 'A hand-painted papier-mâché lamp depicting tropical leaves and Southeast Asian birds.',
     description:
-      'Built from layers of recycled paper and rice paste on a wooden armature, this lamp base is hand-painted in the Kashmiri naqash style with vivid chinar leaves, kingfishers, and lotus buds. A coat of natural lacquer protects the surface and gives it a rich sheen. Fitted with a brass socket and a hand-stitched raw silk shade.',
+      'Built from layers of recycled paper and rice paste on a wooden armature, this lamp base is hand-painted in the naqash style with vivid tropical leaves, kingfishers, and lotus buds. A coat of natural lacquer protects the surface and gives it a rich sheen. Fitted with a brass socket and a hand-stitched raw silk shade.',
     story:
-      'Kashmiri papier-mâché was introduced by the Persians in the 15th century and quickly became one of the valley\u2019s signature crafts. The naqash painters train for a minimum of seven years.',
+      'Papier-mâché craft was introduced to Singapore by early artisan settlers and quickly became one of the island\u2019s signature crafts. The naqash painters train for a minimum of seven years.',
     images: [
       'https://cdn.pixabay.com/photo/2014/12/26/11/56/lamp-580378_1280.jpg',
       'https://cdn.pixabay.com/photo/2015/02/06/10/30/still-life-625935_1280.jpg',
@@ -1104,14 +1104,14 @@ export const products = [
     material: 'Iron',
     price: 248,
     rating: 4.7,
-    origin: 'Jodhpur, India',
-    artisan: 'Rajputana Iron Forge',
+    origin: 'Dempsey Hill, Singapore',
+    artisan: 'Lion City Metalworks',
     dimensions: '36 in x 10 in x 10 in',
     shortDescription: 'A tall wrought-iron floor lantern with geometric cutouts, commanding any entryway.',
     description:
       'Standing three feet tall, this floor lantern is hand-forged from heavy-gauge iron and features geometric cutout patterns on all four faces. It houses a large pillar candle or can be retrofitted with an LED bulb. The matte black finish is achieved through traditional heat-bluing rather than paint, ensuring it never chips or peels.',
     story:
-      'Jodhpur\u2019s ironworkers historically forged weapons and fortress gates for Marwar kings. Today they channel that same muscular craft into decorative pieces for modern homes.',
+      'Singapore\u2019s ironworkers historically forged gates and railings for colonial-era buildings. Today they channel that same muscular craft into decorative pieces for modern homes.',
     images: [
       'https://cdn.pixabay.com/photo/2014/11/27/15/14/lanterns-547681_1280.jpg',
       'https://cdn.pixabay.com/photo/2020/03/17/22/52/lamp-4942111_1280.jpg',
@@ -1130,7 +1130,7 @@ export const collectionHighlights = [
     title: 'Pottery & Ceramics',
     subtitle: 'Earth, Wheel, Fire',
     description:
-      'From the centuries-old kilns of Khurja to the sun-baked studios of Jaipur, our ceramic collection celebrates the elemental alchemy of clay and flame. Each piece carries the fingerprint of its maker and the memory of its fire.',
+      'From the heritage kilns of Chinatown to the sun-baked studios of Joo Chiat, our ceramic collection celebrates the elemental alchemy of clay and flame. Each piece carries the fingerprint of its maker and the memory of its fire.',
     image: 'https://cdn.pixabay.com/photo/2022/08/28/16/13/vases-7417040_1280.jpg',
     productCount: 6,
   },
@@ -1139,7 +1139,7 @@ export const collectionHighlights = [
     title: 'Textiles & Weaves',
     subtitle: 'Thread by Thread, Story by Story',
     description:
-      'India\u2019s textile heritage is the richest on Earth \u2014 from Varanasi\u2019s silk looms to Kutch\u2019s indigo vats, from Bengal\u2019s kantha needles to Kashmir\u2019s pashmina spindles. Every thread in our collection is a verse in an epic poem woven across millennia.',
+      'Singapore\u2019s textile heritage is richly diverse \u2014 from Kampong Glam\u2019s silk looms to Katong\u2019s indigo vats, from Peranakan quilting needles to Arab Street\u2019s pashmina spindles. Every thread in our collection is a verse in an epic poem woven across generations.',
     image: 'https://cdn.pixabay.com/photo/2015/04/22/15/08/saree-734917_1280.jpg',
     productCount: 6,
   },
@@ -1148,7 +1148,7 @@ export const collectionHighlights = [
     title: 'Woodcraft',
     subtitle: 'Carved from Living Memory',
     description:
-      'Walnut from Kashmir, rosewood from the Deccan, sandalwood from Mysore, teak from Jodhpur \u2014 India\u2019s woodworkers transform noble timbers into objects of quiet power. Our collection spans turned bowls, carved trays, lacquered toys, and sculptural forms.',
+      'Walnut from Dempsey Hill, rosewood from Tiong Bahru, sandalwood from Holland Village, teak from our heritage workshops \u2014 Singapore\u2019s woodworkers transform noble timbers into objects of quiet power. Our collection spans turned bowls, carved trays, lacquered toys, and sculptural forms.',
     image: 'https://cdn.pixabay.com/photo/2015/04/05/22/35/wooden-articles-708693_1280.jpg',
     productCount: 6,
   },
@@ -1157,7 +1157,7 @@ export const collectionHighlights = [
     title: 'Metalwork & Brass',
     subtitle: 'Forged in the Brass City',
     description:
-      'Moradabad\u2019s hammers have been ringing since the Mughal era, shaping brass, copper, and silver into objects that blur the line between utility and art. From Bidri\u2019s silver-inlaid noir to Bankura\u2019s ancient Dokra castings, this is metallurgy as storytelling.',
+      'Little India\u2019s hammers have been ringing since the colonial era, shaping brass, copper, and silver into objects that blur the line between utility and art. From Arab Street\u2019s silver-inlaid noir to Chinatown\u2019s ancient Dokra castings, this is metallurgy as storytelling.',
     image: 'https://cdn.pixabay.com/photo/2017/10/26/10/03/diwali-2890605_1280.jpg',
     productCount: 6,
   },
@@ -1166,7 +1166,7 @@ export const collectionHighlights = [
     title: 'Wall Art & Decor',
     subtitle: 'Walls That Speak',
     description:
-      'From the mineral pigments of Pichwai to the rice-paste geometry of Warli, from Madhubani\u2019s cosmic trees to Tanjore\u2019s gold-leaf deities \u2014 Indian wall art transforms blank surfaces into portals of myth, devotion, and wonder.',
+      'From the mineral pigments of Pichwai to the rice-paste geometry of Warli, from Madhubani\u2019s cosmic trees to Tanjore\u2019s gold-leaf deities \u2014 Singaporean wall art transforms blank surfaces into portals of myth, devotion, and wonder.',
     image: 'https://cdn.pixabay.com/photo/2015/11/04/21/26/painting-1023379_1280.jpg',
     productCount: 6,
   },
@@ -1175,7 +1175,7 @@ export const collectionHighlights = [
     title: 'Jewelry & Accessories',
     subtitle: 'Adornment as Art',
     description:
-      'Kundan settings from Jaipur, filigree from Cuttack, zardozi from Lucknow, block-print from Bagru \u2014 our accessories collection brings India\u2019s most celebrated adornment traditions to your everyday wardrobe.',
+      'Kundan settings from Chinatown, filigree from Joo Chiat, embroidery from Arab Street, block-print from Tiong Bahru \u2014 our accessories collection brings Singapore\u2019s most celebrated adornment traditions to your everyday wardrobe.',
     image: 'https://cdn.pixabay.com/photo/2014/02/28/15/11/earrings-276924_1280.jpg',
     productCount: 5,
   },
@@ -1184,7 +1184,7 @@ export const collectionHighlights = [
     title: 'Home Fragrance',
     subtitle: 'Scent as Ceremony',
     description:
-      'India is the ancient homeland of perfume. Our fragrance collection draws from Kannauj\u2019s 5,000-year-old attar distilleries, Mysore\u2019s sandalwood groves, and the Nilgiri hills\u2019 eucalyptus forests to bring sacred scent into your daily rituals.',
+      'Singapore is a crossroads of the world\u2019s finest fragrance traditions. Our fragrance collection draws from Arab Street\u2019s heritage attar distilleries, Holland Village\u2019s sandalwood workshops, and the Botanic Gardens\u2019 lush inspiration to bring sacred scent into your daily rituals.',
     image: 'https://cdn.pixabay.com/photo/2014/10/13/23/13/candle-487696_1280.jpg',
     productCount: 5,
   },
@@ -1193,7 +1193,7 @@ export const collectionHighlights = [
     title: 'Lighting',
     subtitle: 'Light, Shadow, Magic',
     description:
-      'Our lighting collection transforms Mughal jali screens, temple diya traditions, and Kashmiri decorative arts into luminous objects for the modern home. Each piece doesn\u2019t just illuminate a room \u2014 it reimagines it.',
+      'Our lighting collection transforms colonial-era jali screens, temple diya traditions, and heritage decorative arts into luminous objects for the modern home. Each piece doesn\u2019t just illuminate a room \u2014 it reimagines it.',
     image: 'https://cdn.pixabay.com/photo/2014/11/27/15/14/lanterns-547681_1280.jpg',
     productCount: 5,
   },
@@ -1204,26 +1204,26 @@ export const testimonials = [
   {
     id: 'testimonial-1',
     name: 'Ananya Sharma',
-    role: 'Interior Designer, Mumbai',
+    role: 'Interior Designer, Singapore',
     avatar: 'AS',
     rating: 5,
-    text: 'CraftHarmony has become my secret weapon for sourcing statement pieces for client projects. The Pichwai panel I ordered for a Bandra penthouse became the talking point of the entire home. The quality and provenance documentation are unmatched.',
+    text: 'CraftHarmony has become my secret weapon for sourcing statement pieces for client projects. The Pichwai panel I ordered for an Orchard Road penthouse became the talking point of the entire home. The quality and provenance documentation are unmatched.',
   },
   {
     id: 'testimonial-2',
     name: 'Rohan Mehta',
-    role: 'Architect, Bengaluru',
+    role: 'Architect, Singapore',
     avatar: 'RM',
     rating: 5,
-    text: 'I specified the Filigree Starlight Pendant Lamp for a heritage hotel restoration in Hampi and the client was speechless. It cast the most extraordinary light patterns across the stone walls. CraftHarmony bridges the gap between craft and contemporary design effortlessly.',
+    text: 'I specified the Filigree Starlight Pendant Lamp for a heritage hotel restoration in Kampong Glam and the client was speechless. It cast the most extraordinary light patterns across the stone walls. CraftHarmony bridges the gap between craft and contemporary design effortlessly.',
   },
   {
     id: 'testimonial-3',
     name: 'Priya Krishnan',
-    role: 'Caf\u00e9 Owner, Pondicherry',
+    role: 'Caf\u00e9 Owner, Tiong Bahru',
     avatar: 'PK',
     rating: 5,
-    text: 'Every surface in my caf\u00e9 features something from CraftHarmony \u2014 the Khurja ceramic bowls we serve breakfast in, the Warli canvas behind the counter, the copper mugs for our signature chai. Guests constantly ask where it all comes from. It\u2019s become part of our brand story.',
+    text: 'Every surface in my caf\u00e9 features something from CraftHarmony \u2014 the Chinatown ceramic bowls we serve breakfast in, the Warli canvas behind the counter, the copper mugs for our signature chai. Guests constantly ask where it all comes from. It\u2019s become part of our brand story.',
   },
   {
     id: 'testimonial-4',
@@ -1231,22 +1231,22 @@ export const testimonials = [
     role: 'Expat Art Collector, London',
     avatar: 'VS',
     rating: 5,
-    text: 'Living abroad, I yearned for authentic Indian craft that didn\u2019t feel like tourist souvenirs. CraftHarmony delivers museum-quality pieces with real artisan stories. My Bidri Noir Vase sits in my Mayfair flat and stops every visitor in their tracks.',
+    text: 'Living abroad, I yearned for authentic Singaporean craft that didn\u2019t feel like tourist souvenirs. CraftHarmony delivers museum-quality pieces with real artisan stories. My Bidri Noir Vase sits in my Mayfair flat and stops every visitor in their tracks.',
   },
   {
     id: 'testimonial-5',
     name: 'Neha Kapoor',
-    role: 'Wedding Planner, Delhi',
+    role: 'Wedding Planner, Singapore',
     avatar: 'NK',
     rating: 5,
-    text: 'For a destination wedding in Udaipur, I ordered 200 brass diyas and 50 block-print totes as guest favours. CraftHarmony handled the custom order flawlessly and delivered two weeks early. The guests treasured them far more than any generic gift box.',
+    text: 'For a destination wedding in Sentosa, I ordered 200 brass diyas and 50 block-print totes as guest favours. CraftHarmony handled the custom order flawlessly and delivered two weeks early. The guests treasured them far more than any generic gift box.',
   },
   {
     id: 'testimonial-6',
     name: 'Isha Patel',
-    role: 'Lifestyle Blogger, Jaipur',
+    role: 'Lifestyle Blogger, Singapore',
     avatar: 'IP',
     rating: 5,
-    text: 'I\u2019ve featured CraftHarmony in three separate posts and every single product has outperformed my usual engagement metrics. Their Pashmina Cloud Wrap and the Rose Attar Set are the most-saved items on my entire feed. This is what "made in India" should always feel like.',
+    text: 'I\u2019ve featured CraftHarmony in three separate posts and every single product has outperformed my usual engagement metrics. Their Pashmina Cloud Wrap and the Rose Attar Set are the most-saved items on my entire feed. This is what "made in Singapore" should always feel like.',
   },
 ];

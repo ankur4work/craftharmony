@@ -50,7 +50,7 @@ export default function Navbar() {
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cocoa/10 bg-cocoa font-serif text-lg text-white shadow-sm">C</div>
               <div className="min-w-0">
                 <p className="truncate font-serif text-xl leading-none text-cocoa sm:text-2xl">CraftHarmony</p>
-                <p className="mt-1 hidden text-[10px] uppercase tracking-[0.28em] text-stone-400 sm:block">curated craft objects from india</p>
+                <p className="mt-1 hidden text-[10px] uppercase tracking-[0.28em] text-stone-400 sm:block">curated craft objects from singapore</p>
               </div>
             </Link>
 
@@ -67,7 +67,7 @@ export default function Navbar() {
                     Policies
                   </button>
                   {showPolicies && (
-                    <div className="absolute right-0 top-12 w-64 rounded-2xl border border-cocoa/10 bg-white p-2 shadow-soft-lg">
+                    <div className="absolute right-0 top-full w-64 rounded-2xl border border-cocoa/10 bg-white p-2 pt-3 shadow-soft-lg before:absolute before:-top-2 before:left-0 before:right-0 before:h-2">
                       {policyItems.map((item) => (
                         <Link
                           key={item.path}

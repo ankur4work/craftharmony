@@ -9,8 +9,8 @@ import { ToastProvider } from '@/context/ToastContext';
 export const metadata = {
   metadataBase: new URL('https://craftharmony.art'),
   title: { default: 'CraftHarmony | Luxury Handmade Marketplace', template: '%s | CraftHarmony' },
-  description: 'India\'s premier handmade luxury marketplace. 45+ curated masterpieces from 25+ artisan studios — pottery, textiles, woodcraft, metalwork, jewelry, lighting, and more.',
-  keywords: ['Indian handicrafts', 'luxury handmade', 'artisan decor', 'handmade pottery', 'Indian textiles', 'brass metalwork', 'Kashmiri woodcraft', 'CraftHarmony'],
+  description: 'Singapore\'s premier handmade luxury marketplace. 45+ curated masterpieces from 25+ artisan studios — pottery, textiles, woodcraft, metalwork, jewelry, lighting, and more.',
+  keywords: ['Singapore handicrafts', 'luxury handmade', 'artisan decor', 'handmade pottery', 'Singapore textiles', 'brass metalwork', 'Peranakan craft', 'CraftHarmony'],
   icons: { icon: '/favicon.svg' },
   openGraph: {
     type: 'website',
