@@ -163,7 +163,7 @@ export default function ProductDetailClient({ productId }) {
                 </span>
                 <span className="rounded-full border border-cocoa/10 px-3 py-1.5 text-xs uppercase tracking-[0.12em] text-stone-500">{product.material}</span>
                 <span className={`rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] ${product.stock > 5 ? 'bg-forest/10 text-forest' : product.stock > 0 ? 'bg-amber-100 text-amber-700' : 'bg-terracotta/10 text-terracotta'}`}>
-                  {product.stock > 5 ? `${product.stock} in stock` : product.stock > 0 ? `Only ${product.stock} left` : 'Out of stock'}
+                  {product.stock > 5 ? 'In stock' : product.stock > 0 ? 'Low stock' : 'Out of stock'}
                 </span>
               </div>
 

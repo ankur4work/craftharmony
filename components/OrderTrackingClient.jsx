@@ -180,17 +180,38 @@ export default function OrderTrackingClient() {
                     <div className="px-6 py-6 sm:px-8">
                       <StatusTracker status={order.status} />
 
-                      {order.trackingNumber && (
-                        <div className="mt-6 flex items-center gap-4 rounded-2xl border border-cocoa/8 bg-sand/30 p-4">
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cocoa/10 text-cocoa">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                      {order.trackingNumber && (() => {
+                        const carrier = order.trackingCarrier || '';
+                        const trackUrl = carrier === 'FedEx'
+                          ? `https://www.fedex.com/fedextrack/?trknbr=${encodeURIComponent(order.trackingNumber)}`
+                          : carrier === 'DHL'
+                            ? `https://www.dhl.com/us-en/home/tracking/tracking-shipments.html?submit=1&tracking-id=${encodeURIComponent(order.trackingNumber)}`
+                            : `https://parcelsapp.com/en/tracking/${encodeURIComponent(order.trackingNumber)}`;
+                        return (
+                          <div className="mt-6 rounded-2xl border border-cocoa/8 bg-sand/30 p-4">
+                            <div className="flex items-center gap-4">
+                              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cocoa text-white">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">
+                                  {carrier ? `${carrier} Tracking` : 'Tracking Number'}
+                                </p>
+                                <p className="mt-1 font-mono text-sm font-semibold text-cocoa">{order.trackingNumber}</p>
+                              </div>
+                            </div>
+                            <a
+                              href={trackUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-cocoa px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white transition hover:-translate-y-0.5 hover:bg-[#4f392f] hover:shadow-glow"
+                            >
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                              {carrier ? `Track on ${carrier}` : 'Track Live'}
+                            </a>
                           </div>
-                          <div>
-                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Tracking Number</p>
-                            <p className="mt-1 font-mono text-sm font-semibold text-cocoa">{order.trackingNumber}</p>
-                          </div>
-                        </div>
-                      )}
+                        );
+                      })()}
 
                       <div className="mt-8">
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Items</p>

@@ -97,6 +97,8 @@ export default function AdminInventoryClient() {
   const [selectedIds, setSelectedIds] = useState([]);
   const [stockFilter, setStockFilter] = useState('all');
   const [showOrders, setShowOrders] = useState(true);
+  const [orderFilter, setOrderFilter] = useState('active');
+  const [orderSearch, setOrderSearch] = useState('');
   const [formState, setFormState] = useState(EMPTY_FORM);
   const productWorkspaceRef = useRef(null);
   const productNameInputRef = useRef(null);
@@ -473,6 +475,27 @@ export default function AdminInventoryClient() {
               <div className="rounded-full border border-cocoa/10 bg-sand/40 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-cocoa">
                 {orderStats.totalOrders} total orders
               </div>
+              <select
+                value={orderFilter}
+                onChange={(e) => setOrderFilter(e.target.value)}
+                className="h-9 rounded-full border border-cocoa/12 bg-white px-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-cocoa outline-none transition focus:border-cocoa"
+              >
+                <option value="active">Active Orders</option>
+                <option value="all">All Orders</option>
+                <option value="Placed">Placed</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Out for Delivery">Out for Delivery</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+              <input
+                type="text"
+                value={orderSearch}
+                onChange={(e) => setOrderSearch(e.target.value)}
+                placeholder="Search by order ID or email"
+                className="h-9 min-w-[180px] flex-1 rounded-full border border-cocoa/12 bg-white px-4 text-xs text-cocoa outline-none transition focus:border-cocoa"
+              />
               <button type="button" onClick={() => refreshOrders()} className="rounded-full border border-cocoa/12 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand">
                 Refresh
               </button>
@@ -481,7 +504,7 @@ export default function AdminInventoryClient() {
                 onClick={() => setShowOrders((current) => !current)}
                 className="rounded-full border border-cocoa/12 bg-white px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-cocoa transition hover:bg-sand"
               >
-                {showOrders ? 'Hide Orders' : 'Show Orders'}
+                {showOrders ? 'Hide' : 'Show'}
               </button>
             </div>
           </div>
@@ -493,7 +516,15 @@ export default function AdminInventoryClient() {
             </div>
           ) : (
             <div className="mt-6 space-y-4">
-              {orders.filter((order) => order.status !== 'Delivered').map((order) => {
+              {orders.filter((order) => {
+                const statusMatch = orderFilter === 'active' ? order.status !== 'Delivered' && order.status !== 'Cancelled'
+                  : orderFilter === 'all' ? true
+                  : order.status === orderFilter;
+                if (!statusMatch) return false;
+                const q = orderSearch.trim().toLowerCase();
+                if (!q) return true;
+                return order.id.toLowerCase().includes(q) || order.customer?.email?.toLowerCase().includes(q) || `${order.customer?.firstName} ${order.customer?.lastName}`.toLowerCase().includes(q);
+              }).map((order) => {
                 const statusColor = {
                   Placed: 'bg-amber-100 text-amber-700',
                   Confirmed: 'bg-blue-50 text-blue-700',
@@ -556,6 +587,27 @@ export default function AdminInventoryClient() {
 
                   <div className="mt-3 flex flex-wrap items-center gap-3">
                     <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Tracking:</span>
+                    <select
+                      defaultValue={order.trackingCarrier || ''}
+                      onChange={async (e) => {
+                        const val = e.target.value;
+                        if (val === (order.trackingCarrier || '')) return;
+                        setIsSaving(true);
+                        try {
+                          await updateOrder(order.id, { trackingCarrier: val });
+                          addToast(val ? `Carrier set to ${val}` : 'Carrier removed', 'success');
+                        } catch (err) {
+                          addToast(err.message || 'Failed to save carrier', 'error');
+                        } finally {
+                          setIsSaving(false);
+                        }
+                      }}
+                      className="h-9 rounded-xl border border-cocoa/10 bg-white px-3 text-sm text-cocoa outline-none transition focus:border-cocoa"
+                    >
+                      <option value="">Select carrier</option>
+                      <option value="FedEx">FedEx</option>
+                      <option value="DHL">DHL</option>
+                    </select>
                     <input
                       type="text"
                       defaultValue={order.trackingNumber || ''}
@@ -566,7 +618,7 @@ export default function AdminInventoryClient() {
                         setIsSaving(true);
                         try {
                           await updateOrder(order.id, { trackingNumber: val });
-                          addToast(val ? `Tracking number saved for ${order.id}` : `Tracking number removed for ${order.id}`, 'success');
+                          addToast(val ? `Tracking number saved` : `Tracking number removed`, 'success');
                         } catch (err) {
                           addToast(err.message || 'Failed to save tracking', 'error');
                         } finally {

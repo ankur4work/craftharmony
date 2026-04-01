@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { isAdminRequest } from '@/lib/admin-auth';
-import { getOrdersCollection } from '@/lib/mongodb';
+import { getOrdersCollection, getInventoryCollection } from '@/lib/mongodb';
 
 export const dynamic = 'force-dynamic';
 
@@ -91,6 +91,16 @@ export async function POST(request) {
     const collection = await getOrdersCollection();
     await collection.insertOne(order);
 
+    const productsCollection = await getInventoryCollection();
+    for (const item of items) {
+      if (item.id && item.quantity > 0) {
+        await productsCollection.updateOne(
+          { id: item.id, stock: { $gte: item.quantity } },
+          { $inc: { stock: -item.quantity } }
+        );
+      }
+    }
+
     return NextResponse.json({ order }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
@@ -107,7 +117,7 @@ export async function PATCH(request) {
   }
 
   try {
-    const { orderId, status, trackingNumber } = await request.json();
+    const { orderId, status, trackingNumber, trackingCarrier } = await request.json();
 
     if (!orderId) {
       return NextResponse.json({ error: 'orderId is required' }, { status: 400 });
@@ -124,6 +134,10 @@ export async function PATCH(request) {
 
     if (typeof trackingNumber === 'string') {
       updates.trackingNumber = trackingNumber.trim();
+    }
+
+    if (typeof trackingCarrier === 'string') {
+      updates.trackingCarrier = trackingCarrier.trim();
     }
 
     const collection = await getOrdersCollection();

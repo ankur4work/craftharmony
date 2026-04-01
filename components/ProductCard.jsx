@@ -84,7 +84,7 @@ export default function ProductCard({ product }) {
             </span>
           </div>
           <div className="mb-3 text-xs uppercase tracking-[0.16em] text-stone-400">
-            {isOutOfStock ? 'Currently unavailable' : `${product.stock} ready to ship`}
+            {isOutOfStock ? 'Currently unavailable' : 'In stock · Ready to ship'}
           </div>
           <button type="button" className="button-primary w-full text-xs disabled:cursor-not-allowed disabled:opacity-60" onClick={handleAddToCart} disabled={isOutOfStock}>Add to Cart</button>
         </div>

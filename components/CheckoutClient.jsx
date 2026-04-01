@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useOrders } from '@/context/OrderContext';
+import { useInventory } from '@/context/InventoryContext';
 import ImageWithFallback from '@/components/ImageWithFallback';
 import ScrollReveal from '@/components/ScrollReveal';
 
@@ -62,6 +63,7 @@ function validateCheckoutForm(form) {
 export default function CheckoutClient() {
   const { cartItems, totalPrice, clearCart, isHydrated } = useCart();
   const { placeOrder } = useOrders();
+  const { refreshProducts } = useInventory();
   const [formState, setFormState] = useState(INITIAL_FORM);
   const [formErrors, setFormErrors] = useState(INITIAL_ERRORS);
   const [orderPlaced, setOrderPlaced] = useState(null);
@@ -123,6 +125,7 @@ export default function CheckoutClient() {
 
       setOrderPlaced(order);
       clearCart();
+      refreshProducts();
       setFormState(INITIAL_FORM);
       setFormErrors(INITIAL_ERRORS);
     } catch {

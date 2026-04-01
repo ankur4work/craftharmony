@@ -40,7 +40,7 @@ export default function HomePageClient() {
                 {[
                   [`${inventoryStats.totalProducts}+`, 'Curated Pieces', `${shopCategories.length} craft categories`],
                   ['25+', 'Artisan Studios', 'Across Singapore'],
-                  [`${inventoryStats.totalUnits}+`, 'Units in Stock', 'Managed in real time'],
+                  ['100%', 'Handcrafted', 'Ethically sourced'],
                   ['4.8/5', 'Collector Rating', 'Trusted by designers'],
                 ].map(([value, label, sublabel]) => (
                   <div key={label} className="rounded-2xl border border-white/60 bg-white/65 p-4 backdrop-blur-sm">
@@ -251,9 +251,9 @@ export default function HomePageClient() {
         <ScrollReveal>
           <div className="premium-panel grid gap-6 overflow-hidden p-8 md:grid-cols-3 md:p-12">
             {[
-              [`${inventoryStats.totalProducts}`, 'Products Live', 'Visible across the storefront'],
-              [`${inventoryStats.totalUnits}`, 'Units in Stock', 'Across all active items'],
-              [`$${Math.round(inventoryStats.totalValue).toLocaleString()}`, 'Inventory Value', 'Calculated from price and stock'],
+              [`${inventoryStats.totalProducts}+`, 'Curated Pieces', 'Handpicked by our team'],
+              ['25+', 'Artisan Studios', 'Across Singapore'],
+              ['100%', 'Ethically Made', 'Fair trade, no middlemen'],
             ].map((stat) => (
               <div key={stat[1]} className="text-center">
                 <p className="font-serif text-5xl text-terracotta md:text-6xl">{stat[0]}</p>
