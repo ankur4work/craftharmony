@@ -52,11 +52,11 @@ export function OrderProvider({ children }) {
     return data.order;
   }, []);
 
-  const updateOrderStatus = useCallback(async (orderId, status) => {
+  const updateOrder = useCallback(async (orderId, updates) => {
     const res = await fetch('/api/orders', {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ orderId, status }),
+      body: JSON.stringify({ orderId, ...updates }),
     });
 
     if (!res.ok) {
@@ -89,7 +89,7 @@ export function OrderProvider({ children }) {
       orders,
       orderStats,
       placeOrder,
-      updateOrderStatus,
+      updateOrder,
       fetchOrdersByEmail,
       refreshOrders: fetchAllOrders,
       isHydrated,

@@ -14,21 +14,27 @@ function mapDocument(doc) {
 
 // GET /api/orders — fetch orders
 // Admin: returns all orders
-// Customer: requires ?email= query param, returns matching orders
+// Customer: requires ?email= or ?orderId= query param, returns matching orders
 export async function GET(request) {
   try {
     const collection = await getOrdersCollection();
     const { searchParams } = new URL(request.url);
     const email = searchParams.get('email');
+    const orderId = searchParams.get('orderId');
     const isAdmin = isAdminRequest(request);
 
-    if (!isAdmin && !email) {
-      return NextResponse.json({ error: 'Email is required to look up orders' }, { status: 400 });
+    if (!isAdmin && !email && !orderId) {
+      return NextResponse.json({ error: 'Email or Order ID is required' }, { status: 400 });
     }
 
-    const query = email
-      ? { 'customer.email': email.toLowerCase().trim() }
-      : isAdmin ? {} : {};
+    let query;
+    if (orderId) {
+      query = { id: orderId.trim().toUpperCase() };
+    } else if (email) {
+      query = { 'customer.email': email.toLowerCase().trim() };
+    } else {
+      query = {};
+    }
     const docs = await collection.find(query).sort({ placedAt: -1 }).toArray();
     return NextResponse.json({ orders: docs.map(mapDocument) });
   } catch (error) {
@@ -101,20 +107,29 @@ export async function PATCH(request) {
   }
 
   try {
-    const { orderId, status } = await request.json();
+    const { orderId, status, trackingNumber } = await request.json();
 
-    if (!orderId || !status) {
-      return NextResponse.json({ error: 'orderId and status are required' }, { status: 400 });
+    if (!orderId) {
+      return NextResponse.json({ error: 'orderId is required' }, { status: 400 });
     }
 
-    if (!ORDER_STATUSES.includes(status)) {
-      return NextResponse.json({ error: `Invalid status. Must be one of: ${ORDER_STATUSES.join(', ')}` }, { status: 400 });
+    const updates = { updatedAt: new Date().toISOString() };
+
+    if (status) {
+      if (!ORDER_STATUSES.includes(status)) {
+        return NextResponse.json({ error: `Invalid status. Must be one of: ${ORDER_STATUSES.join(', ')}` }, { status: 400 });
+      }
+      updates.status = status;
+    }
+
+    if (typeof trackingNumber === 'string') {
+      updates.trackingNumber = trackingNumber.trim();
     }
 
     const collection = await getOrdersCollection();
     const result = await collection.updateOne(
       { id: orderId },
-      { $set: { status, updatedAt: new Date().toISOString() } }
+      { $set: updates }
     );
 
     if (result.matchedCount === 0) {

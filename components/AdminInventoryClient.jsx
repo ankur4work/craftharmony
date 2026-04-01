@@ -88,7 +88,7 @@ export default function AdminInventoryClient() {
     deleteProduct,
     upsertProduct,
   } = useInventory();
-  const { isHydrated: ordersHydrated, orders, orderStats, updateOrderStatus, refreshOrders } = useOrders();
+  const { isHydrated: ordersHydrated, orders, orderStats, updateOrder, refreshOrders } = useOrders();
   const { addToast } = useToast();
   const [activeProductId, setActiveProductId] = useState('');
   const [isCreatingNew, setIsCreatingNew] = useState(false);
@@ -529,8 +529,8 @@ export default function AdminInventoryClient() {
                     </div>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap items-center gap-3">
-                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Update Status:</span>
+                  <div className="mt-4 flex flex-wrap items-center gap-2">
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Status:</span>
                     {['Placed', 'Confirmed', 'Shipped', 'Out for Delivery', 'Delivered', 'Cancelled'].map((s) => (
                       <button
                         key={s}
@@ -539,7 +539,7 @@ export default function AdminInventoryClient() {
                         onClick={async () => {
                           setIsSaving(true);
                           try {
-                            await updateOrderStatus(order.id, s);
+                            await updateOrder(order.id, { status: s });
                             addToast(`Order ${order.id} marked as ${s}`, 'success');
                           } catch (err) {
                             addToast(err.message || 'Failed to update', 'error');
@@ -552,6 +552,30 @@ export default function AdminInventoryClient() {
                         {s}
                       </button>
                     ))}
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap items-center gap-3">
+                    <span className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">Tracking:</span>
+                    <input
+                      type="text"
+                      defaultValue={order.trackingNumber || ''}
+                      placeholder="Enter tracking number"
+                      onBlur={async (e) => {
+                        const val = e.target.value.trim();
+                        if (val === (order.trackingNumber || '')) return;
+                        setIsSaving(true);
+                        try {
+                          await updateOrder(order.id, { trackingNumber: val });
+                          addToast(val ? `Tracking number saved for ${order.id}` : `Tracking number removed for ${order.id}`, 'success');
+                        } catch (err) {
+                          addToast(err.message || 'Failed to save tracking', 'error');
+                        } finally {
+                          setIsSaving(false);
+                        }
+                      }}
+                      onKeyDown={(e) => { if (e.key === 'Enter') e.target.blur(); }}
+                      className="h-9 flex-1 min-w-[200px] rounded-xl border border-cocoa/10 bg-white px-3 text-sm text-cocoa outline-none transition focus:border-cocoa"
+                    />
                   </div>
 
                   <div className="mt-5 grid gap-3">

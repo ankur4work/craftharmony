@@ -149,7 +149,7 @@ export default function CheckoutClient() {
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
             </div>
             <h1 className="mt-6 font-serif text-4xl text-cocoa">Order Confirmed</h1>
-            <p className="mt-4 text-stone-500">Your order has been placed and is now visible in the admin dashboard.</p>
+            <p className="mt-4 text-stone-500">Thank you! Your order has been placed successfully.</p>
             <p className="mt-3 text-sm text-stone-500">
               Order ID: <span className="font-semibold text-cocoa">{orderPlaced.id}</span>
             </p>

@@ -72,16 +72,21 @@ function StatusTracker({ status }) {
 }
 
 export default function OrderTrackingClient() {
-  const [email, setEmail] = useState('');
+  const [searchValue, setSearchValue] = useState('');
   const [orders, setOrders] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const handleLookup = async (e) => {
     e.preventDefault();
+    const value = searchValue.trim();
+    if (!value) { setError('Please enter an email or order ID'); return; }
+
+    const isOrderId = value.toUpperCase().startsWith('CH-');
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    if (!emailRegex.test(email.trim())) {
-      setError('Please enter a valid email address');
+
+    if (!isOrderId && !emailRegex.test(value)) {
+      setError('Please enter a valid email address or order ID (e.g. CH-XXXXXXXX-XXXX)');
       return;
     }
 
@@ -89,7 +94,10 @@ export default function OrderTrackingClient() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`/api/orders?email=${encodeURIComponent(email.trim())}`, { cache: 'no-store' });
+      const param = isOrderId
+        ? `orderId=${encodeURIComponent(value)}`
+        : `email=${encodeURIComponent(value)}`;
+      const res = await fetch(`/api/orders?${param}`, { cache: 'no-store' });
       if (!res.ok) {
         setError('Could not fetch orders. Please try again.');
         return;
@@ -112,7 +120,7 @@ export default function OrderTrackingClient() {
         </p>
         <h1 className="mt-3 font-serif text-4xl leading-none text-cocoa md:text-5xl">Track your orders</h1>
         <p className="mt-4 max-w-2xl text-stone-500">
-          Enter the email address you used during checkout to view your order history and track delivery status.
+          Enter your email address or order ID (e.g. CH-XXXXXXXX-XXXX) to view your order history and track delivery status.
         </p>
       </ScrollReveal>
 
@@ -120,10 +128,10 @@ export default function OrderTrackingClient() {
         <form onSubmit={handleLookup} className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-start">
           <div className="flex-1">
             <input
-              type="email"
-              value={email}
-              onChange={(e) => { setEmail(e.target.value); setError(''); }}
-              placeholder="Enter your email address"
+              type="text"
+              value={searchValue}
+              onChange={(e) => { setSearchValue(e.target.value); setError(''); }}
+              placeholder="Enter email address or order ID"
               required
               className={`h-14 w-full rounded-2xl border bg-white/80 px-6 text-sm text-stone-700 shadow-soft outline-none transition focus:border-cocoa focus:shadow-glow ${error ? 'border-red-400' : 'border-cocoa/10'}`}
             />
@@ -171,6 +179,18 @@ export default function OrderTrackingClient() {
 
                     <div className="px-6 py-6 sm:px-8">
                       <StatusTracker status={order.status} />
+
+                      {order.trackingNumber && (
+                        <div className="mt-6 flex items-center gap-4 rounded-2xl border border-cocoa/8 bg-sand/30 p-4">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-cocoa/10 text-cocoa">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                          </div>
+                          <div>
+                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Tracking Number</p>
+                            <p className="mt-1 font-mono text-sm font-semibold text-cocoa">{order.trackingNumber}</p>
+                          </div>
+                        </div>
+                      )}
 
                       <div className="mt-8">
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Items</p>
