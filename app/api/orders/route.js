@@ -26,7 +26,9 @@ export async function GET(request) {
       return NextResponse.json({ error: 'Email is required to look up orders' }, { status: 400 });
     }
 
-    const query = isAdmin ? {} : { 'customer.email': email.toLowerCase().trim() };
+    const query = email
+      ? { 'customer.email': email.toLowerCase().trim() }
+      : isAdmin ? {} : {};
     const docs = await collection.find(query).sort({ placedAt: -1 }).toArray();
     return NextResponse.json({ orders: docs.map(mapDocument) });
   } catch (error) {
